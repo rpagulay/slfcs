@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sioux Lookout Filipino-Canadian Society</title>
+    <style>
+        :root {
+            --primary: #0B2545;
+            --secondary: #C8102E;
+            --accent: #F4C430;
+            --light: #F8F9FA;
+            --dark: #1A1A1A;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+        header { background: var(--primary); color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; sticky: top; }
+        .logo-container { display: flex; align-items: center; gap: 1rem; }
+        .logo-container img { height: 60px; border-radius: 50%; border: 2px solid var(--accent); }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+        .nav-links a:hover { color: var(--accent); }
+        .hero { background: linear-gradient(rgba(11,37,69,0.85), rgba(11,37,69,0.85)), url('logo.jpg') center/cover; color: white; padding: 5rem 2rem; text-align: center; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent); }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; }
+        .btn { background: var(--secondary); color: white; padding: 0.8rem 1.8rem; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn:hover { background: #a00c24; }
+        .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 2rem; color: var(--primary); font-size: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-top: 4px solid var(--accent); }
+        footer { background: var(--primary); color: white; text-align: center; padding: 2rem; margin-top: 4rem; border-top: 3px solid var(--accent); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="SLFCS Logo">
+            <h2>SLFCS</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#membership">Membership</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+    <section class="hero">
+        <h1>Sioux Lookout Filipino-Canadian Society</h1>
+        <p>Pagkakaisa · Unity | Est. 2026 · Ontario</p>
+        <a href="#membership" class="btn">Join Our Community</a>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">About Our Society</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Our Mission</h3>
+                <p>To foster unity, celebrate Filipino heritage, and actively contribute to the vibrant community of Sioux Lookout, Ontario.</p>
+            </div>
+            <div class="card">
+                <h3>Community & Culture</h3>
+                <p>Bringing together families, workers, and newcomers through cultural events, youth programs, and mutual support (Bayanihan).</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="section" style="background:#fff;">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Community Gathering</h3>
+                <p><strong>Date:</strong> Coming Soon</p>
+                <p>Join us for food, music, and fellowship with fellow members in Sioux Lookout.</p>
+            </div>
+            <div class="card">
+                <h3>Cultural Celebration</h3>
+                <p><strong>Date:</strong> Summer 2026</p>
+                <p>Celebrating Filipino-Canadian friendship and heritage.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Sioux Lookout Filipino-Canadian Society. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
