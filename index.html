@@ -1,152 +1,662 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sioux Lookout Filipino-Canadian Society</title>
-    <style>
-        :root {
-            --primary: #0B2545;
-            --secondary: #C8102E;
-            --accent: #F4C430;
-            --light: #F8F9FA;
-            --dark: #1A1A1A;
+    <title>Sioux Lookout Filipino-Canadian Society | Pagkakaisa · Unity</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#061a33',
+                            900: '#0B2545',
+                            800: '#134074',
+                        },
+                        gold: {
+                            400: '#F5D061',
+                            500: '#F4C430',
+                            600: '#D4A017',
+                        },
+                        brandRed: '#C8102E',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
-        header { background: var(--primary); color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        .logo-container { display: flex; align-items: center; gap: 1rem; }
-        .logo-container img { height: 50px; width: 50px; object-fit: cover; border-radius: 50%; border: 2px solid var(--accent); }
-        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--accent); }
-        .social-icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: white; color: var(--primary); border-radius: 50%; text-decoration: none; font-weight: bold; transition: background 0.2s, color 0.2s; }
-        .social-icon:hover { background: var(--accent); color: var(--primary); }
-        .hero { background: linear-gradient(rgba(11,37,69,0.85), rgba(11,37,69,0.85)), center/cover; color: white; padding: 5rem 2rem; text-align: center; }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent); }
-        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; }
-        .btn { background: var(--secondary); color: white; padding: 0.8rem 1.8rem; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
-        .btn:hover { background: #a00c24; }
-        .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
-        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
-        .section-subtitle { text-transform: uppercase; font-size: 0.85rem; font-weight: 700; letter-spacing: 1.5px; color: var(--secondary); margin-bottom: 0.5rem; }
-        .section-title { color: var(--primary); font-size: 2.2rem; margin: 0; }
-        .section-desc { color: #555; max-width: 450px; font-size: 0.95rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        
-        /* Event Card Styling */
-        .event-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
-        .event-card-header { background: var(--secondary); color: white; padding: 1.5rem; position: relative; }
-        .event-date-day { font-size: 1.8rem; font-weight: 800; line-height: 1; color: var(--accent); }
-        .event-date-month { font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: 0.25rem; }
-        .event-badge { position: absolute; top: 1.5rem; right: 1.5rem; background: white; color: var(--secondary); padding: 0.25rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
-        .event-card-body { padding: 1.8rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .event-title { color: var(--primary); font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 700; }
-        .event-text { color: #555; font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.5; }
-        .event-meta { border-top: 1px solid #eee; padding-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem; color: #666; }
-        .meta-item { display: flex; align-items: flex-start; gap: 0.5rem; }
-
-        .contact-box { background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; border-top: 4px solid var(--secondary); text-align: center; }
-        .contact-box p { margin-bottom: 1rem; font-size: 1.1rem; }
-        footer { background: var(--primary); color: white; text-align: center; padding: 2rem; margin-top: 4rem; border-top: 3px solid var(--accent); }
+    </script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F5D061 0%, #D4A017 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-pattern {
+            background-color: #0B2545;
+            background-image: radial-gradient(#134074 0.75px, transparent 0.75px), radial-gradient(#134074 0.75px, #0B2545 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
     </style>
 </head>
-<body>
-    <header>
-        <div class="logo-container">
-            <img src="logo.jpg" alt="SLFCS Logo">
-            <h2>SLFCS</h2>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-brandRed text-white text-xs md:text-sm py-2 px-4 text-center font-medium">
+        <span class="inline-block bg-white/20 rounded-full px-2 py-0.5 text-xs mr-2">Est. 2026</span>
+        <span>Mabuhay! Welcome to the official digital home of the Sioux Lookout Filipino-Canadian Society (SLFCS).</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo & Brand Name -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <img src="image_962cb2.jpg" alt="Sioux Lookout Filipino-Canadian Society Logo" class="h-14 w-14 object-contain rounded-full shadow-sm group-hover:scale-105 transition-transform duration-300">
+                    <div>
+                        <span class="block font-serif font-bold text-lg md:text-xl text-navy-900 leading-tight">Sioux Lookout</span>
+                        <span class="block text-xs md:text-sm font-semibold tracking-wider text-brandRed uppercase">Filipino-Canadian Society</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-gray-700">
+                    <a href="#home" class="hover:text-brandRed transition-colors">Home</a>
+                    <a href="#about" class="hover:text-brandRed transition-colors">About Us</a>
+                    <a href="#events" class="hover:text-brandRed transition-colors">Events</a>
+                    <a href="#membership" class="hover:text-brandRed transition-colors">Get Involved</a>
+                    <a href="#gallery" class="hover:text-brandRed transition-colors">Gallery</a>
+                    <a href="#contact" class="bg-navy-900 text-white px-5 py-2.5 rounded-full hover:bg-brandRed transition-colors shadow-sm">Contact Us</a>
+                </nav>
+
+                <!-- Mobile Menu Toggle Button -->
+                <div class="flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="text-gray-700 hover:text-navy-900 focus:outline-none p-2" aria-label="Toggle Menu">
+                        <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li>
-                <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" class="social-icon" title="Join our Facebook Group">f</a>
-            </li>
-        </ul>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Home</a>
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">About Us</a>
+            <a href="#events" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Events</a>
+            <a href="#membership" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Get Involved</a>
+            <a href="#gallery" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Gallery</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 text-center rounded-md text-base font-medium bg-navy-900 text-white hover:bg-brandRed">Contact Us</a>
+        </div>
     </header>
 
-    <section class="hero">
-        <h1>Sioux Lookout Filipino-Canadian Society</h1>
-        <p>Pagkakaisa · Unity | Est. 2026 · Ontario</p>
-        <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" class="btn">Visit Our Facebook Group</a>
-    </section>
+    <!-- Main Content Area -->
+    <main class="flex-grow">
 
-    <section id="about" class="section">
-        <div class="section-header">
-            <div>
-                <div class="section-subtitle">Who We Are</div>
-                <h2 class="section-title">About Our Society</h2>
-            </div>
-        </div>
-        <div class="grid">
-            <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid var(--accent);">
-                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Our Mission</h3>
-                <p>To foster unity, celebrate Filipino heritage, and actively contribute to the vibrant community of Sioux Lookout, Ontario.</p>
-            </div>
-            <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid var(--accent);">
-                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Community & Culture</h3>
-                <p>Bringing together families, workers, and newcomers through cultural events, youth programs, and mutual support (Bayanihan).</p>
-            </div>
-        </div>
-    </section>
+        <!-- Hero Section -->
+        <section id="home" class="relative hero-pattern text-white py-20 md:py-28 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid md:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="md:col-span-7 text-center md:text-left space-y-6">
+                        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-gold-400 font-semibold text-sm">
+                            <i class="fa-solid fa-hands-holding-child"></i>
+                            <span>Pagkakaisa · Unity</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight">
+                            Connecting <span class="gold-gradient-text">Culture & Community</span> in Sioux Lookout
+                        </h1>
+                        <p class="text-gray-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                            Fostering fellowship, celebrating rich heritage, and empowering Filipino-Canadians in Northwestern Ontario through community engagement and cultural harmony.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+                            <a href="#membership" class="inline-flex items-center justify-center px-8 py-3.5 border border-transparent font-medium rounded-full text-navy-900 bg-gold-400 hover:bg-gold-500 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+                                <i class="fa-solid fa-user-plus mr-2"></i> Become a Member
+                            </a>
+                            <a href="#events" class="inline-flex items-center justify-center px-8 py-3.5 border border-white/30 font-medium rounded-full text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300">
+                                <i class="fa-regular fa-calendar-check mr-2"></i> Upcoming Events
+                            </a>
+                        </div>
+                    </div>
 
-    <!-- Upcoming Events Section -->
-    <section id="events" class="section" style="background:#fff;">
-        <div class="section-header">
-            <div>
-                <div class="section-subtitle">Gatherings & Activities</div>
-                <h2 class="section-title">Upcoming Events</h2>
-            </div>
-            <div class="section-desc">
-                Join us for cultural celebrations, social gatherings, and community events.
-            </div>
-        </div>
+                    <!-- Logo Showcase Card -->
+                    <div class="md:col-span-5 flex justify-center">
+                        <div class="relative group">
+                            <!-- Soft Glow Ring -->
+                            <div class="absolute -inset-1 bg-gradient-to-r from-gold-400 via-brandRed to-gold-500 rounded-full blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
+                            
+                            <div class="relative bg-white p-6 rounded-3xl shadow-2xl border-4 border-gold-400 max-w-sm text-center">
+                                <img src="image_962cb2.jpg" alt="Sioux Lookout Filipino-Canadian Society Emblem" class="w-64 h-64 mx-auto object-contain drop-shadow-md">
+                                <div class="mt-4 pt-4 border-t border-gray-100">
+                                    <h3 class="font-serif font-bold text-navy-900 text-lg">Sioux Lookout, Ontario</h3>
+                                    <p class="text-xs text-gray-500 font-medium mt-1">ESTABLISHED 2026</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="grid" style="grid-template-columns: minmax(300px, 400px);">
-            <!-- Christmas Party Event Card -->
-            <div class="event-card">
-                <div class="event-card-header">
-                    <div class="event-date-day">12</div>
-                    <div class="event-date-month">DECEMBER 2026</div>
-                    <span class="event-badge">SOCIAL</span>
                 </div>
-                <div class="event-card-body">
+            </div>
+        </section>
+
+        <!-- Quick Stats Banner -->
+        <section class="bg-navy-800 text-white py-6 border-t border-b border-navy-700">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="p-2">
+                        <p class="text-3xl font-bold text-gold-400 font-serif">100%</p>
+                        <p class="text-xs sm:text-sm text-gray-300">Volunteer Powered</p>
+                    </div>
+                    <div class="p-2">
+                        <p class="text-3xl font-bold text-gold-400 font-serif">Ontario</p>
+                        <p class="text-xs sm:text-sm text-gray-300">Sioux Lookout Region</p>
+                    </div>
+                    <div class="p-2">
+                        <p class="text-3xl font-bold text-gold-400 font-serif">Year-Round</p>
+                        <p class="text-xs sm:text-sm text-gray-300">Cultural & Social Events</p>
+                    </div>
+                    <div class="p-2">
+                        <p class="text-3xl font-bold text-gold-400 font-serif">Open</p>
+                        <p class="text-xs sm:text-sm text-gray-300">To All Community Members</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">About Our Society</h2>
+                    <p class="mt-2 text-3xl sm:text-4xl font-serif font-bold text-navy-900">Rooted in Unity, Caring for Community</p>
+                    <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Mission Card -->
+                    <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-gold-400 hover:shadow-lg transition-all duration-300">
+                        <div class="w-12 h-12 bg-navy-900 text-gold-400 rounded-xl flex items-center justify-center text-xl mb-6 shadow-sm">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 font-serif mb-3">Our Mission</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            To bring together Filipinos and friends of the Filipino community in Sioux Lookout, promoting cultural preservation, mutual support, integration, and community development.
+                        </p>
+                    </div>
+
+                    <!-- Cultural Preservation -->
+                    <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-gold-400 hover:shadow-lg transition-all duration-300">
+                        <div class="w-12 h-12 bg-brandRed text-white rounded-xl flex items-center justify-center text-xl mb-6 shadow-sm">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 font-serif mb-3">Bayanihan Spirit</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            We embody the cherished tradition of <em>Bayanihan</em>—communal unity and cooperation—helping new newcomers settle comfortably and feel at home in Northern Ontario.
+                        </p>
+                    </div>
+
+                    <!-- Community Building -->
+                    <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-gold-400 hover:shadow-lg transition-all duration-300">
+                        <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-xl flex items-center justify-center text-xl mb-6 shadow-sm">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 font-serif mb-3">Cultural Heritage</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            Celebrating Philippine heritage, festivals, languages, and culinary arts while actively contributing to the multicultural tapestry of Sioux Lookout.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Community Message Spotlight -->
+                <div class="mt-16 bg-navy-900 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden">
+                    <div class="relative z-10 grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-8 space-y-4">
+                            <h3 class="text-2xl font-serif font-bold text-gold-400">Welcome to Sioux Lookout (Hub of the North)</h3>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                                Whether you have lived in Sioux Lookout for years or have just arrived, our society is here to welcome you. We collaborate with local businesses, civic organizations, and local government to build bridges of friendship and shared growth.
+                            </p>
+                        </div>
+                        <div class="md:col-span-4 text-center md:text-right">
+                            <a href="#contact" class="inline-block bg-white text-navy-900 font-bold px-6 py-3 rounded-full hover:bg-gold-400 transition-colors shadow-md text-sm">
+                                Get in Touch With Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="events" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                     <div>
-                        <h3 class="event-title">Christmas Party 2026</h3>
-                        <p class="event-text">Celebrate the festive season with our community! Join us for an evening of delicious food, holiday music, games, and fellowship.</p>
+                        <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Gatherings & Activities</h2>
+                        <p class="mt-2 text-3xl font-serif font-bold text-navy-900">Upcoming Events</p>
                     </div>
-                    <div class="event-meta">
-                        <div class="meta-item">
-                            <span>📍</span>
-                            <span>Royal Canadian Legion Branch 78<br>86 Front St, Sioux Lookout, ON P8T 1A3</span>
+                    <p class="text-gray-500 text-sm mt-2 md:mt-0">Join us for cultural celebrations, sports, and social potlucks.</p>
+                </div>
+
+                <!-- Events Grid -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- Event 1 -->
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col">
+                        <div class="bg-navy-900 p-6 text-white relative">
+                            <span class="absolute top-4 right-4 bg-gold-500 text-navy-900 text-xs font-bold px-3 py-1 rounded-full uppercase">Community</span>
+                            <div class="text-3xl font-bold font-serif text-gold-400">12</div>
+                            <div class="text-xs uppercase tracking-wider text-gray-300">June 2026</div>
                         </div>
-                        <div class="meta-item">
-                            <span>🕒</span>
-                            <span>6:00 PM (18:00)</span>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <div>
+                                <h3 class="font-bold text-lg text-navy-900 mb-2 font-serif">Philippine Independence Day Celebration</h3>
+                                <p class="text-gray-600 text-sm line-clamp-3">
+                                    Join us for traditional food, folk dances, musical performances, and family games as we mark Philippine Independence Day.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100 space-y-2 text-xs text-gray-500">
+                                <div class="flex items-center"><i class="fa-solid fa-location-dot w-5 text-brandRed"></i> Sioux Lookout Community Center</div>
+                                <div class="flex items-center"><i class="fa-regular fa-clock w-5 text-brandRed"></i> 11:00 AM – 4:00 PM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 2 -->
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col">
+                        <div class="bg-brandRed p-6 text-white relative">
+                            <span class="absolute top-4 right-4 bg-white text-brandRed text-xs font-bold px-3 py-1 rounded-full uppercase">Social</span>
+                            <div class="text-3xl font-bold font-serif text-white">25</div>
+                            <div class="text-xs uppercase tracking-wider text-red-100">July 2026</div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <div>
+                                <h3 class="font-bold text-lg text-navy-900 mb-2 font-serif">Summer Family Picnic & Potluck</h3>
+                                <p class="text-gray-600 text-sm line-clamp-3">
+                                    A fun outdoor gathering by the lake! Bring your favorite Filipino dishes, enjoy barbecue, and meet fellow community members.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100 space-y-2 text-xs text-gray-500">
+                                <div class="flex items-center"><i class="fa-solid fa-location-dot w-5 text-brandRed"></i> Town Beach Park</div>
+                                <div class="flex items-center"><i class="fa-regular fa-clock w-5 text-brandRed"></i> 12:00 PM – 5:00 PM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 3 -->
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col">
+                        <div class="bg-navy-800 p-6 text-white relative">
+                            <span class="absolute top-4 right-4 bg-gold-500 text-navy-900 text-xs font-bold px-3 py-1 rounded-full uppercase">Meeting</span>
+                            <div class="text-3xl font-bold font-serif text-gold-400">15</div>
+                            <div class="text-xs uppercase tracking-wider text-gray-300">September 2026</div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <div>
+                                <h3 class="font-bold text-lg text-navy-900 mb-2 font-serif">General Membership Assembly</h3>
+                                <p class="text-gray-600 text-sm line-clamp-3">
+                                    Annual association updates, project planning for the upcoming winter season, and open forum for community suggestions.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100 space-y-2 text-xs text-gray-500">
+                                <div class="flex items-center"><i class="fa-solid fa-location-dot w-5 text-brandRed"></i> Sioux Lookout Public Library Hall</div>
+                                <div class="flex items-center"><i class="fa-regular fa-clock w-5 text-brandRed"></i> 2:00 PM – 4:00 PM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Membership / Get Involved Section -->
+        <section id="membership" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-5 space-y-6">
+                        <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Join Our Family</h2>
+                        <h3 class="text-3xl sm:text-4xl font-serif font-bold text-navy-900">Become a Registered Member</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Membership is open to everyone residing in Sioux Lookout and surrounding regions who supports the mission and cultural goals of our society.
+                        </p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-gold-400/20 text-navy-900 flex items-center justify-center shrink-0 mt-1">
+                                    <i class="fa-solid fa-check text-sm font-bold"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy-900">Community Support Network</h4>
+                                    <p class="text-gray-500 text-sm">Access to newcomer orientation, community aid, and peer guidance.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-gold-400/20 text-navy-900 flex items-center justify-center shrink-0 mt-1">
+                                    <i class="fa-solid fa-check text-sm font-bold"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy-900">Event Discounts & Invites</h4>
+                                    <p class="text-gray-500 text-sm">Priority admission and member rates for major gatherings and workshops.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-gold-400/20 text-navy-900 flex items-center justify-center shrink-0 mt-1">
+                                    <i class="fa-solid fa-check text-sm font-bold"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy-900">Voting Rights</h4>
+                                    <p class="text-gray-500 text-sm">Have a voice in society meetings, initiatives, and leadership elections.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Membership Form / Signup Box -->
+                    <div class="lg:col-span-7">
+                        <div class="bg-gray-50 p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-sm">
+                            <h3 class="text-xl font-bold font-serif text-navy-900 mb-6">Inquire About Membership</h3>
+                            
+                            <form id="membership-inquiry-form" class="space-y-4">
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">First Name</label>
+                                        <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Last Name</label>
+                                        <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white text-sm">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Email Address</label>
+                                    <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">How would you like to participate?</label>
+                                    <select class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white text-sm">
+                                        <option>General Member</option>
+                                        <option>Volunteer for Events</option>
+                                        <option>Youth Committee Member</option>
+                                        <option>Sponsor / Partner</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="w-full py-3.5 bg-navy-900 text-white font-bold rounded-xl hover:bg-brandRed transition-colors shadow-md mt-2">
+                                    Submit Membership Inquiry
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section id="gallery" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Community Memories</h2>
+                    <p class="mt-2 text-3xl font-serif font-bold text-navy-900">Life in Sioux Lookout</p>
+                    <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Gallery Cards Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Photo 1 -->
+                    <div class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Community Gathering" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white text-xs font-medium">Community Potluck</span>
+                        </div>
+                    </div>
+
+                    <!-- Photo 2 -->
+                    <div class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80" alt="Cultural Dance" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white text-xs font-medium">Cultural Celebration</span>
+                        </div>
+                    </div>
+
+                    <!-- Photo 3 -->
+                    <div class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=600&q=80" alt="Youth Activities" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white text-xs font-medium">Youth & Volunteers</span>
+                        </div>
+                    </div>
+
+                    <!-- Photo 4 -->
+                    <div class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80" alt="Sioux Lookout Landscape" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white text-xs font-medium">Sioux Lookout Outdoors</span>
                         </div>
                     </div>
                 </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid lg:grid-cols-12 gap-12">
+                    
+                    <!-- Contact Info -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div>
+                            <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Reach Out</h2>
+                            <h3 class="text-3xl font-serif font-bold text-navy-900 mt-2">Connect With Us</h3>
+                            <p class="text-gray-600 text-sm mt-3">
+                                Have questions, ideas for events, or want to partner with our organization? Send us a message and our executive team will reply soon.
+                            </p>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-full bg-navy-900 text-gold-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy-900 text-sm">Location</h4>
+                                    <p class="text-gray-600 text-sm">Sioux Lookout, Ontario, Canada</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-full bg-navy-900 text-gold-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy-900 text-sm">Email Address</h4>
+                                    <p class="text-gray-600 text-sm">contact@slfcs.ca</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-full bg-navy-900 text-gold-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-share-nodes"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy-900 text-sm">Social Media</h4>
+                                    <div class="flex space-x-3 mt-2">
+                                        <a href="#" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-brandRed hover:text-white flex items-center justify-center text-gray-600 transition-colors">
+                                            <i class="fa-brands fa-facebook-f text-sm"></i>
+                                        </a>
+                                        <a href="#" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-brandRed hover:text-white flex items-center justify-center text-gray-600 transition-colors">
+                                            <i class="fa-brands fa-instagram text-sm"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Form -->
+                    <div class="lg:col-span-7">
+                        <form id="contact-form" class="bg-gray-50 p-8 rounded-3xl border border-gray-200 shadow-sm space-y-6">
+                            <h3 class="font-serif font-bold text-navy-900 text-xl">Send a Message</h3>
+                            
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-2">Your Name</label>
+                                    <input type="text" id="contact-name" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white text-sm" placeholder="Juan Dela Cruz">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-2">Your Email</label>
+                                    <input type="email" id="contact-email" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white text-sm" placeholder="name@example.com">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 uppercase mb-2">Subject</label>
+                                <input type="text" id="contact-subject" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white text-sm" placeholder="General Inquiry / Volunteering">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 uppercase mb-2">Message</label>
+                                <textarea id="contact-message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white text-sm" placeholder="Write your message here..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 bg-navy-900 hover:bg-brandRed text-white font-bold rounded-xl transition-colors shadow-md text-sm">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 text-white border-t border-navy-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/10">
+                
+                <!-- Organization Branding -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="image_962cb2.jpg" alt="SLFCS Logo" class="h-12 w-12 rounded-full bg-white p-0.5">
+                        <span class="font-serif font-bold text-lg text-white">Sioux Lookout Filipino-Canadian Society</span>
+                    </div>
+                    <p class="text-gray-400 text-sm max-w-sm">
+                        Promoting unity, cultural heritage, and mutual support in Sioux Lookout, Ontario. <em>Pagkakaisa · Unity (Est. 2026)</em>
+                    </p>
+                </div>
+
+                <!-- Navigation Quick Links -->
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="text-gold-400 font-bold text-xs uppercase tracking-wider">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#events" class="hover:text-white transition-colors">Events & Calendar</a></li>
+                        <li><a href="#membership" class="hover:text-white transition-colors">Membership Inquiry</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal / Regional -->
+                <div class="md:col-span-4 space-y-3">
+                    <h4 class="text-gold-400 font-bold text-xs uppercase tracking-wider">Community Motto</h4>
+                    <p class="text-sm text-gray-300">
+                        "Pagkakaisa" — Building strong connections across Northwestern Ontario through volunteerism, inclusivity, and heritage.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="pt-8 text-center text-xs text-gray-400 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Sioux Lookout Filipino-Canadian Society. All rights reserved.</p>
+                <p class="text-gray-400">Sioux Lookout, Ontario, Canada</p>
             </div>
         </div>
-    </section>
-
-    <section id="contact" class="section">
-        <div class="section-header" style="justify-content: center; text-align: center;">
-            <div>
-                <div class="section-subtitle">Get In Touch</div>
-                <h2 class="section-title">Contact Us</h2>
-            </div>
-        </div>
-        <div class="contact-box">
-            <p>Connect with our community, ask questions, or stay updated on upcoming association activities through our official group link below:</p>
-            <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" class="btn">Go to Facebook Group</a>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Sioux Lookout Filipino-Canadian Society. All Rights Reserved.</p>
     </footer>
+
+    <!-- Success Modal Notification -->
+    <div id="success-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full text-center space-y-4 shadow-2xl border border-gray-100">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-2xl font-serif font-bold text-navy-900">Salamat!</h3>
+            <p class="text-gray-600 text-sm">Your message has been sent successfully. A member of our committee will be in touch with you shortly.</p>
+            <button id="close-modal" class="w-full py-3 bg-navy-900 text-white font-bold rounded-xl hover:bg-brandRed transition-colors">
+                Close Window
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactivity -->
+    <script>
+        // Mobile Navigation Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-2xl';
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            });
+        });
+
+        // Contact Form Submission Handler
+        const contactForm = document.getElementById('contact-form');
+        const membershipForm = document.getElementById('membership-inquiry-form');
+        const modal = document.getElementById('success-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+
+        function showSuccessModal(e) {
+            e.preventDefault();
+            modal.classList.remove('hidden');
+            if(e.target) e.target.reset();
+        }
+
+        contactForm.addEventListener('submit', showSuccessModal);
+        membershipForm.addEventListener('submit', showSuccessModal);
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
