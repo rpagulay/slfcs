@@ -14,21 +14,40 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
-        header { background: var(--primary); color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; sticky: top; }
+        header { background: var(--primary); color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .logo-container { display: flex; align-items: center; gap: 1rem; }
-        .logo-container img { height: 60px; border-radius: 50%; border: 2px solid var(--accent); }
-        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+        .logo-container img { height: 50px; width: 50px; object-fit: cover; border-radius: 50%; border: 2px solid var(--accent); }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: color 0.2s; }
         .nav-links a:hover { color: var(--accent); }
-        .hero { background: linear-gradient(rgba(11,37,69,0.85), rgba(11,37,69,0.85)), url('logo.jpg') center/cover; color: white; padding: 5rem 2rem; text-align: center; }
+        .social-icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: white; color: var(--primary); border-radius: 50%; text-decoration: none; font-weight: bold; transition: background 0.2s, color 0.2s; }
+        .social-icon:hover { background: var(--accent); color: var(--primary); }
+        .hero { background: linear-gradient(rgba(11,37,69,0.85), rgba(11,37,69,0.85)), center/cover; color: white; padding: 5rem 2rem; text-align: center; }
         .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent); }
         .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; }
-        .btn { background: var(--secondary); color: white; padding: 0.8rem 1.8rem; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn { background: var(--secondary); color: white; padding: 0.8rem 1.8rem; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
         .btn:hover { background: #a00c24; }
         .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 2rem; color: var(--primary); font-size: 2rem; }
+        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+        .section-subtitle { text-transform: uppercase; font-size: 0.85rem; font-weight: 700; letter-spacing: 1.5px; color: var(--secondary); margin-bottom: 0.5rem; }
+        .section-title { color: var(--primary); font-size: 2.2rem; margin: 0; }
+        .section-desc { color: #555; max-width: 450px; font-size: 0.95rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-top: 4px solid var(--accent); }
+        
+        /* Event Card Styling */
+        .event-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
+        .event-card-header { background: var(--secondary); color: white; padding: 1.5rem; position: relative; }
+        .event-date-day { font-size: 1.8rem; font-weight: 800; line-height: 1; color: var(--accent); }
+        .event-date-month { font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: 0.25rem; }
+        .event-badge { position: absolute; top: 1.5rem; right: 1.5rem; background: white; color: var(--secondary); padding: 0.25rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .event-card-body { padding: 1.8rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .event-title { color: var(--primary); font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 700; }
+        .event-text { color: #555; font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.5; }
+        .event-meta { border-top: 1px solid #eee; padding-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem; color: #666; }
+        .meta-item { display: flex; align-items: flex-start; gap: 0.5rem; }
+
+        .contact-box { background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; border-top: 4px solid var(--secondary); text-align: center; }
+        .contact-box p { margin-bottom: 1rem; font-size: 1.1rem; }
         footer { background: var(--primary); color: white; text-align: center; padding: 2rem; margin-top: 4rem; border-top: 3px solid var(--accent); }
     </style>
 </head>
@@ -41,44 +60,88 @@
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#events">Events</a></li>
-            <li><a href="#membership">Membership</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li>
+                <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" class="social-icon" title="Join our Facebook Group">f</a>
+            </li>
         </ul>
     </header>
 
     <section class="hero">
         <h1>Sioux Lookout Filipino-Canadian Society</h1>
         <p>Pagkakaisa · Unity | Est. 2026 · Ontario</p>
-        <a href="#membership" class="btn">Join Our Community</a>
+        <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" class="btn">Visit Our Facebook Group</a>
     </section>
 
     <section id="about" class="section">
-        <h2 class="section-title">About Our Society</h2>
+        <div class="section-header">
+            <div>
+                <div class="section-subtitle">Who We Are</div>
+                <h2 class="section-title">About Our Society</h2>
+            </div>
+        </div>
         <div class="grid">
-            <div class="card">
-                <h3>Our Mission</h3>
+            <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid var(--accent);">
+                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Our Mission</h3>
                 <p>To foster unity, celebrate Filipino heritage, and actively contribute to the vibrant community of Sioux Lookout, Ontario.</p>
             </div>
-            <div class="card">
-                <h3>Community & Culture</h3>
+            <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid var(--accent);">
+                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Community & Culture</h3>
                 <p>Bringing together families, workers, and newcomers through cultural events, youth programs, and mutual support (Bayanihan).</p>
             </div>
         </div>
     </section>
 
+    <!-- Upcoming Events Section -->
     <section id="events" class="section" style="background:#fff;">
-        <h2 class="section-title">Upcoming Events</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Community Gathering</h3>
-                <p><strong>Date:</strong> Coming Soon</p>
-                <p>Join us for food, music, and fellowship with fellow members in Sioux Lookout.</p>
+        <div class="section-header">
+            <div>
+                <div class="section-subtitle">Gatherings & Activities</div>
+                <h2 class="section-title">Upcoming Events</h2>
             </div>
-            <div class="card">
-                <h3>Cultural Celebration</h3>
-                <p><strong>Date:</strong> Summer 2026</p>
-                <p>Celebrating Filipino-Canadian friendship and heritage.</p>
+            <div class="section-desc">
+                Join us for cultural celebrations, social gatherings, and community events.
             </div>
+        </div>
+
+        <div class="grid" style="grid-template-columns: minmax(300px, 400px);">
+            <!-- Christmas Party Event Card -->
+            <div class="event-card">
+                <div class="event-card-header">
+                    <div class="event-date-day">12</div>
+                    <div class="event-date-month">DECEMBER 2026</div>
+                    <span class="event-badge">SOCIAL</span>
+                </div>
+                <div class="event-card-body">
+                    <div>
+                        <h3 class="event-title">Christmas Party 2026</h3>
+                        <p class="event-text">Celebrate the festive season with our community! Join us for an evening of delicious food, holiday music, games, and fellowship.</p>
+                    </div>
+                    <div class="event-meta">
+                        <div class="meta-item">
+                            <span>📍</span>
+                            <span>Royal Canadian Legion Branch 78<br>86 Front St, Sioux Lookout, ON P8T 1A3</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>🕒</span>
+                            <span>6:00 PM (18:00)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="section-header" style="justify-content: center; text-align: center;">
+            <div>
+                <div class="section-subtitle">Get In Touch</div>
+                <h2 class="section-title">Contact Us</h2>
+            </div>
+        </div>
+        <div class="contact-box">
+            <p>Connect with our community, ask questions, or stay updated on upcoming association activities through our official group link below:</p>
+            <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" class="btn">Go to Facebook Group</a>
         </div>
     </section>
 
