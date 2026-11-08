@@ -57,7 +57,7 @@
     <div id="toast-container" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
         <div class="bg-navy-900 text-white px-6 py-3 rounded-xl shadow-2xl border border-gold-400 flex items-center gap-3">
             <i class="fa-solid fa-circle-check text-gold-400 text-lg"></i>
-            <span id="toast-message" class="text-sm font-medium">Redirecting...</span>
+            <span id="toast-message" class="text-sm font-medium">Redirecting to Facebook Group...</span>
         </div>
     </div>
 
@@ -85,7 +85,7 @@
                     <a href="#home" class="nav-link hover:text-brandRed transition-colors">Home</a>
                     <a href="#about" class="nav-link hover:text-brandRed transition-colors">About Us</a>
                     <a href="#events" class="nav-link hover:text-brandRed transition-colors">Events</a>
-                    <a href="#video" class="nav-link hover:text-brandRed transition-colors">Featured Performance</a>
+                    <a href="#video" class="nav-link hover:text-brandRed transition-colors">Featured Reel</a>
                     <a href="#gallery" class="nav-link hover:text-brandRed transition-colors">Gallery</a>
                     <a href="#contact" class="nav-link hover:text-brandRed transition-colors">Contact</a>
                     <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="w-10 h-10 bg-navy-900 text-white rounded-full flex items-center justify-center hover:bg-brandRed transition-all duration-300 shadow-sm hover:scale-110" title="Join our Facebook Group">
@@ -110,7 +110,7 @@
             <a href="#home" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Home</a>
             <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">About Us</a>
             <a href="#events" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Events</a>
-            <a href="#video" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Featured Performance</a>
+            <a href="#video" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Featured Reel</a>
             <a href="#gallery" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Gallery</a>
             <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Contact</a>
             <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="mobile-link block px-3 py-2 text-center rounded-md text-base font-medium bg-navy-900 text-white hover:bg-brandRed">Facebook Group</a>
@@ -125,7 +125,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="grid md:grid-cols-12 gap-12 items-center">
                     
-                    <div class="md:col-span-12 text-center space-y-6 max-w-3xl mx-auto">
+                    <div class="md:col-span-7 text-center md:text-left space-y-6">
                         <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-gold-400 font-semibold text-sm shadow-sm">
                             <i class="fa-solid fa-hands-holding-child"></i>
                             <span>Pagkakaisa · Unity</span>
@@ -133,16 +133,30 @@
                         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight">
                             Connecting <span class="gold-gradient-text">Culture & Community</span> in Sioux Lookout
                         </h1>
-                        <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                        <p class="text-gray-300 text-base sm:text-lg max-w-2xl leading-relaxed">
                             Fostering fellowship, celebrating rich heritage, and empowering Filipinos in Northwestern Ontario. Open to all nationalities around the globe through community engagement and cultural harmony.
                         </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                            <a href="#events" class="bg-gold-500 hover:bg-gold-600 text-navy-900 font-bold px-8 py-3.5 rounded-xl shadow-lg transition-all duration-300 hover:scale-105">
-                                Explore Events
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+                            <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="inline-flex items-center justify-center px-8 py-3.5 border border-transparent font-medium rounded-full text-navy-900 bg-gold-400 hover:bg-gold-500 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+                                <i class="fa-brands fa-facebook mr-2"></i> Join Facebook Group
                             </a>
-                            <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-8 py-3.5 rounded-xl backdrop-blur-md transition-all duration-300">
-                                Join Community Group
+                            <a href="#events" class="inline-flex items-center justify-center px-8 py-3.5 border border-white/30 font-medium rounded-full text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105">
+                                <i class="fa-regular fa-calendar-check mr-2"></i> Upcoming Events
                             </a>
+                        </div>
+                    </div>
+
+                    <!-- Logo Showcase Card -->
+                    <div class="md:col-span-5 flex justify-center">
+                        <div class="relative group">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-gold-400 via-brandRed to-gold-500 rounded-full blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
+                            <div class="relative bg-white p-6 rounded-3xl shadow-2xl border-4 border-gold-400 max-w-sm text-center transform group-hover:-translate-y-2 transition-transform duration-500">
+                                <img src="logo.jpg" alt="Sioux Lookout Filipino-Canadian Society Emblem" class="w-64 h-64 mx-auto object-cover rounded-2xl drop-shadow-md">
+                                <div class="mt-4 pt-4 border-t border-gray-100">
+                                    <h3 class="font-serif font-bold text-navy-900 text-lg">Sioux Lookout, Ontario</h3>
+                                    <p class="text-xs text-gray-500 font-medium mt-1">ESTABLISHED 2026</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -150,28 +164,251 @@
             </div>
         </section>
 
-        <!-- About Section Placeholder -->
-        <section id="about" class="py-16 px-4 max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl font-serif font-bold text-navy-900 mb-4">About Us</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">Content and community details coming soon.</p>
+        <!-- Quick Stats Banner -->
+        <section class="bg-navy-800 text-white py-6 border-t border-b border-navy-700 shadow-inner">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="p-2 transform hover:scale-105 transition-transform">
+                        <p class="text-3xl font-bold text-gold-400 font-serif">100%</p>
+                        <p class="text-xs sm:text-sm text-gray-300">Volunteer Powered</p>
+                    </div>
+                    <div class="p-2 transform hover:scale-105 transition-transform">
+                        <p class="text-3xl font-bold text-gold-400 font-serif">Ontario</p>
+                        <p class="text-xs sm:text-sm text-gray-300">Sioux Lookout Region</p>
+                    </div>
+                    <div class="p-2 transform hover:scale-105 transition-transform">
+                        <p class="text-3xl font-bold text-gold-400 font-serif">Year-Round</p>
+                        <p class="text-xs sm:text-sm text-gray-300">Cultural & Social Events</p>
+                    </div>
+                    <div class="p-2 transform hover:scale-105 transition-transform">
+                        <p class="text-3xl font-bold text-gold-400 font-serif">Global</p>
+                        <p class="text-xs sm:text-sm text-gray-300">Open to All Nationalities</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">About Our Society</h2>
+                    <p class="mt-2 text-3xl sm:text-4xl font-serif font-bold text-navy-900">Rooted in Unity, Caring for Community</p>
+                    <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-gold-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-navy-900 text-gold-400 rounded-xl flex items-center justify-center text-xl mb-6 shadow-sm">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 font-serif mb-3">Our Mission</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            To bring together Filipinos and friends of all nationalities in Sioux Lookout, promoting cultural preservation, mutual support, integration, and community development.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-gold-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-brandRed text-white rounded-xl flex items-center justify-center text-xl mb-6 shadow-sm">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 font-serif mb-3">Bayanihan Spirit</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            We embody the cherished tradition of <em>Bayanihan</em>—communal unity and cooperation—helping newcomers from around the globe settle comfortably in Northern Ontario.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-gold-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-xl flex items-center justify-center text-xl mb-6 shadow-sm">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 font-serif mb-3">Cultural Heritage</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            Celebrating Philippine heritage while welcoming residents of all nationalities to contribute to the wonderful multicultural tapestry of Sioux Lookout.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="events" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Gatherings & Activities</h2>
+                        <p class="mt-2 text-3xl font-serif font-bold text-navy-900">Upcoming Events</p>
+                    </div>
+                    <p class="text-gray-500 text-sm mt-2 md:mt-0">Click the event card for full details and calendar scheduling.</p>
+                </div>
+
+                <!-- Events Grid (Interactive Christmas Party Card) -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div onclick="openEventModal()" class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col cursor-pointer transform hover:-translate-y-1 group">
+                        <div class="bg-brandRed p-6 text-white relative">
+                            <span class="absolute top-4 right-4 bg-white text-brandRed text-xs font-bold px-3 py-1 rounded-full uppercase shadow-sm">Social</span>
+                            <div class="text-3xl font-bold font-serif text-white group-hover:scale-105 transition-transform">12</div>
+                            <div class="text-xs uppercase tracking-wider text-red-100">December 2026</div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <div>
+                                <h3 class="font-bold text-lg text-navy-900 mb-2 font-serif group-hover:text-brandRed transition-colors">Christmas Party 2026 <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1 text-gray-400"></i></h3>
+                                <p class="text-gray-600 text-sm">
+                                    Celebrate the festive season with our community! Join us for an evening of delicious food, holiday music, games, and fellowship.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100 space-y-2 text-xs text-gray-500">
+                                <div class="flex items-start gap-2"><i class="fa-solid fa-location-dot w-5 text-brandRed mt-0.5"></i> <span>Royal Canadian Legion Branch 78<br>86 Front St, Sioux Lookout, ON P8T 1A3</span></div>
+                                <div class="flex items-center"><i class="fa-regular fa-clock w-5 text-brandRed"></i> 6:00 PM (18:00)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Video / Reel Section -->
+        <section id="video" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Community Highlight</h2>
+                    <p class="mt-2 text-3xl font-serif font-bold text-navy-900">Featured Facebook Reel</p>
+                    <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+                    <p class="text-gray-600 text-sm mt-4">Watch highlights from our community gatherings and get a glimpse of life in Sioux Lookout!</p>
+                </div>
+
+                <div class="max-w-md mx-auto bg-gray-50 rounded-3xl p-6 shadow-xl border border-gray-200 text-center space-y-6 transform hover:scale-[1.01] transition-transform">
+                    <div class="w-20 h-20 bg-navy-900 text-gold-400 rounded-full flex items-center justify-center mx-auto shadow-md text-3xl">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif font-bold text-xl text-navy-900">SLFCS Community Spotlight Reel</h3>
+                        <p class="text-gray-500 text-xs mt-1">Directly hosted on our official Facebook group channel</p>
+                    </div>
+                    <a href="https://www.facebook.com/reel/4689929651325224" target="_blank" onclick="showToast('Opening Facebook Reel...')" class="inline-flex items-center justify-center w-full py-4 bg-brandRed text-white font-bold rounded-2xl hover:bg-navy-900 transition-colors shadow-md">
+                        <i class="fa-solid fa-film mr-2 text-lg"></i> Watch Full Reel on Facebook
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section id="gallery" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Community Memories</h2>
+                    <p class="mt-2 text-3xl font-serif font-bold text-navy-900">Life in Sioux Lookout</p>
+                    <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+                    <p class="text-gray-500 text-sm mt-3">Click any photo to view in full screen.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80', 'Community Potluck')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Community Gathering" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Community Potluck</span>
+                        </div>
+                    </div>
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1200&q=80', 'Cultural Celebration')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80" alt="Cultural Dance" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Cultural Celebration</span>
+                        </div>
+                    </div>
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80', 'Youth & Volunteers')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=600&q=80" alt="Youth Activities" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Youth & Volunteers</span>
+                        </div>
+                    </div>
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80', 'Sioux Lookout Outdoors')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80" alt="Sioux Lookout Landscape" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Sioux Lookout Outdoors</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
+                <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Reach Out</h2>
+                <h3 class="text-3xl font-serif font-bold text-navy-900 mt-2 mb-6">Connect With Us</h3>
+                <p class="text-gray-600 mb-8">
+                    Stay updated on meetings, events, and community activities through our official Facebook group. Everyone around the globe is welcome!
+                </p>
+                <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="inline-flex items-center justify-center px-8 py-4 bg-navy-900 text-white font-bold rounded-full hover:bg-brandRed transition-all duration-300 shadow-lg hover:scale-105">
+                    <i class="fa-brands fa-facebook-f mr-3 text-lg"></i> Visit Our Facebook Group
+                </a>
+            </div>
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="bg-navy-900 text-white py-8 border-t border-navy-800 text-center text-sm">
-        <p>&copy; 2026 Sioux Lookout Filipino-Canadian Society (SLFCS). All rights reserved.</p>
+    <footer class="bg-navy-900 text-white py-12 border-t border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <p class="font-serif text-lg font-bold">Sioux Lookout Filipino-Canadian Society</p>
+            <p class="text-xs text-gray-400">Pagkakaisa · Unity | Open to All Nationalities | Est. 2026 · Sioux Lookout, Ontario</p>
+            <div class="flex justify-center space-x-6 pt-2">
+                <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="text-gray-400 hover:text-gold-400 transition-colors text-xl">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+            </div>
+            <p class="text-xs text-gray-500 pt-4">&copy; 2026 Sioux Lookout Filipino-Canadian Society. All Rights Reserved.</p>
+        </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu & Toast -->
+    <!-- Interactive Event Modal -->
+    <div id="event-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl relative transform transition-all animate-in fade-in zoom-in-95 duration-200">
+            <button onclick="closeEventModal()" class="absolute top-6 right-6 text-gray-400 hover:text-navy-900 text-xl font-bold p-2" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="inline-block bg-brandRed/10 text-brandRed font-bold text-xs uppercase px-3 py-1 rounded-full mb-3">Featured Event</div>
+            <h3 class="text-2xl font-serif font-bold text-navy-900 mb-2">Christmas Party 2026</h3>
+            <p class="text-gray-600 text-sm mb-6">Celebrate the festive season with our community! Join us for an evening of delicious food, holiday music, games, and fellowship. Open to all members and friends.</p>
+            
+            <div class="space-y-3 bg-gray-50 p-4 rounded-2xl mb-6 text-sm text-gray-700">
+                <div class="flex items-start gap-3"><i class="fa-solid fa-calendar-days text-brandRed mt-1"></i> <div><strong>Date:</strong> December 12, 2026</div></div>
+                <div class="flex items-start gap-3"><i class="fa-regular fa-clock text-brandRed mt-1"></i> <div><strong>Time:</strong> 6:00 PM (18:00)</div></div>
+                <div class="flex items-start gap-3"><i class="fa-solid fa-location-dot text-brandRed mt-1"></i> <div><strong>Location:</strong> Royal Canadian Legion Branch 78<br>86 Front St, Sioux Lookout, ON P8T 1A3</div></div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Christmas+Party+2026+-+SLFCS&dates=20261212T230000Z/20261213T030000Z&details=Join+us+for+the+Sioux+Lookout+Filipino-Canadian+Society+Christmas+Party!&location=Royal+Canadian+Legion+Branch+78,+86+Front+St,+Sioux+Lookout,+ON+P8T+1A3" target="_blank" class="flex-1 py-3 bg-navy-900 text-white font-bold rounded-xl text-center hover:bg-brandRed transition-colors shadow-md text-sm">
+                    <i class="fa-regular fa-calendar-plus mr-2"></i> Add to Google Calendar
+                </a>
+                <button onclick="closeEventModal()" class="py-3 px-6 bg-gray-200 text-gray-800 font-bold rounded-xl text-center hover:bg-gray-300 transition-colors text-sm">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Image Preview Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4" onclick="closeLightbox()">
+        <div class="relative max-w-4xl w-full text-center" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white hover:text-gold-400 text-2xl font-bold p-2" aria-label="Close Lightbox">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="lightbox-img" src="" alt="Enlarged community photo" class="max-h-[80vh] mx-auto rounded-2xl shadow-2xl object-contain border-2 border-white/20">
+            <p id="lightbox-caption" class="text-white font-medium text-lg mt-4"></p>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions Script -->
     <script>
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            if (mobileMenu.classList.contains('hidden')) {
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
                 menuIcon.classList.remove('fa-xmark');
                 menuIcon.classList.add('fa-bars');
             } else {
@@ -180,25 +417,56 @@
             }
         });
 
-        // Close mobile menu when clicking a link
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                menu.classList.add('hidden');
                 menuIcon.classList.remove('fa-xmark');
                 menuIcon.classList.add('fa-bars');
             });
         });
 
+        // Event Modal Controls
+        function openEventModal() {
+            const modal = document.getElementById('event-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeEventModal() {
+            const modal = document.getElementById('event-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // Lightbox Gallery Controls
+        function openLightbox(imgSrc, caption) {
+            const lightbox = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            const cap = document.getElementById('lightbox-caption');
+            img.src = imgSrc;
+            cap.textContent = caption;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox-modal');
+            lightbox.classList.remove('flex');
+            lightbox.classList.add('hidden');
+        }
+
+        // Toast Notification System
         function showToast(message) {
-            const container = document.getElementById('toast-container');
-            const msgEl = document.getElementById('toast-message');
-            msgEl.textContent = message;
-            container.classList.remove('translate-y-20', 'opacity-0');
-            container.classList.add('translate-y-0', 'opacity-100');
+            const toast = document.getElementById('toast-container');
+            const msg = document.getElementById('toast-message');
+            msg.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
             setTimeout(() => {
-                container.classList.remove('translate-y-0', 'opacity-100');
-                container.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
         }
     </script>
 </body>
