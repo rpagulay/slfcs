@@ -73,7 +73,7 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo & Brand Name -->
                 <a href="#home" class="flex items-center gap-3 group">
-                    <img src="logo.jpg" alt="Sioux Lookout Filipino-Canadian Society Logo" class="h-12 w-12 object-cover rounded-full shadow-sm border border-gray-200 group-hover:scale-105 transition-transform duration-300">
+                    <img src="logo.jpg" alt="Sioux Lookout Filipino-Canadian Society Logo" class="h-12 w-12 object-cover rounded-full shadow-sm border border-gray-200 group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/100x100/0B2545/F5D061?text=SLFCS'">
                     <div>
                         <span class="block font-serif font-bold text-lg md:text-xl text-navy-900 leading-tight">Sioux Lookout</span>
                         <span class="block text-xs md:text-sm font-semibold tracking-wider text-brandRed uppercase">Filipino-Canadian Society</span>
@@ -126,7 +126,7 @@
                 <div class="grid md:grid-cols-12 gap-12 items-center">
                     
                     <div class="md:col-span-7 text-center md:text-left space-y-6">
-                        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-gold-400 font-semibold text-sm shadow-sm">
+                        <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-gold-400 font-semibold text-sm shadow-sm">
                             <i class="fa-solid fa-hands-holding-child"></i>
                             <span>Pagkakaisa · Unity</span>
                         </div>
@@ -151,7 +151,7 @@
                         <div class="relative group">
                             <div class="absolute -inset-1 bg-gradient-to-r from-gold-400 via-brandRed to-gold-500 rounded-full blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
                             <div class="relative bg-white p-6 rounded-3xl shadow-2xl border-4 border-gold-400 max-w-sm text-center transform group-hover:-translate-y-2 transition-transform duration-500">
-                                <img src="logo.jpg" alt="Sioux Lookout Filipino-Canadian Society Emblem" class="w-64 h-64 mx-auto object-cover rounded-2xl drop-shadow-md">
+                                <img src="logo.jpg" alt="Sioux Lookout Filipino-Canadian Society Emblem" class="w-64 h-64 mx-auto object-cover rounded-2xl drop-shadow-md" onerror="this.src='https://placehold.co/300x300/0B2545/F5D061?text=SLFCS+Logo'">
                                 <div class="mt-4 pt-4 border-t border-gray-100">
                                     <h3 class="font-serif font-bold text-navy-900 text-lg">Sioux Lookout, Ontario</h3>
                                     <p class="text-xs text-gray-500 font-medium mt-1">ESTABLISHED 2026</p>
@@ -267,25 +267,41 @@
             </div>
         </section>
 
-        <!-- Featured Video / Reel Section -->
+        <!-- Featured Video / Reel Section (Rheanne Jaravata Spotlight) -->
         <section id="video" class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-12">
-                    <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Community Highlight</h2>
+                    <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Community Spotlight & Pride</h2>
                     <p class="mt-2 text-3xl font-serif font-bold text-navy-900">Featured Facebook Reel</p>
                     <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
-                    <p class="text-gray-600 text-sm mt-4">Watch highlights from our community gatherings and get a glimpse of life in Sioux Lookout!</p>
                 </div>
 
-                <div class="max-w-md mx-auto bg-gray-50 rounded-3xl p-6 shadow-xl border border-gray-200 text-center space-y-6 transform hover:scale-[1.01] transition-transform">
-                    <div class="w-20 h-20 bg-navy-900 text-gold-400 rounded-full flex items-center justify-center mx-auto shadow-md text-3xl">
-                        <i class="fa-solid fa-play"></i>
+                <div class="max-w-xl mx-auto bg-gradient-to-br from-navy-900 to-navy-800 text-white rounded-3xl p-8 shadow-2xl border border-gold-400/30 text-center space-y-6 transform hover:scale-[1.01] transition-transform relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 text-white/5 text-9xl font-bold pointer-events-none">
+                        <i class="fa-solid fa-hockey-puck"></i>
                     </div>
-                    <div>
-                        <h3 class="font-serif font-bold text-xl text-navy-900">SLFCS Community Spotlight Reel</h3>
-                        <p class="text-gray-500 text-xs mt-1">Directly hosted on our official Facebook group channel</p>
+                    
+                    <div class="inline-flex items-center gap-2 bg-gold-400/20 text-gold-400 px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-gold-400/30">
+                        <i class="fa-solid fa-star"></i> Game Day Pride
                     </div>
-                    <a href="https://www.facebook.com/reel/4689929651325224" target="_blank" onclick="showToast('Opening Facebook Reel...')" class="inline-flex items-center justify-center w-full py-4 bg-brandRed text-white font-bold rounded-2xl hover:bg-navy-900 transition-colors shadow-md">
+
+                    <div class="space-y-3">
+                        <h3 class="font-serif font-bold text-2xl text-gold-400 leading-snug">Rheanne Jaravata Sings O Canada at The Hangar!</h3>
+                        <p class="text-gray-200 text-sm md:text-base leading-relaxed">
+                            What a moment! Our very own <strong class="text-white font-semibold">Rheanne Jaravata</strong> beautifully sang <em>O Canada</em> before the Sioux Lookout Bombers took on the Ironwood Lumberjacks at the Hangar — leading the Bombers on to a thrilling 13-1 victory! 🎵🏒
+                        </p>
+                        <p class="text-gold-300 text-xs italic pt-1">
+                            "So proud of you, Rheanne — you represented our community so beautifully. Maraming salamat! ❤️"
+                        </p>
+                    </div>
+
+                    <div class="pt-2 flex flex-wrap justify-center gap-2 text-xs font-medium text-red-200">
+                        <span class="bg-white/10 px-3 py-1 rounded-full">#GoBombersGo</span>
+                        <span class="bg-white/10 px-3 py-1 rounded-full">#SiouxLookoutBombers</span>
+                        <span class="bg-white/10 px-3 py-1 rounded-full">#SLKTFilipinoCandianSociety</span>
+                    </div>
+
+                    <a href="https://www.facebook.com/reel/4689929651325224" target="_blank" onclick="showToast('Opening Facebook Reel...')" class="inline-flex items-center justify-center w-full py-4 bg-brandRed hover:bg-gold-500 hover:text-navy-900 text-white font-bold rounded-2xl transition-all duration-300 shadow-lg text-base">
                         <i class="fa-solid fa-film mr-2 text-lg"></i> Watch Full Reel on Facebook
                     </a>
                 </div>
@@ -427,46 +443,37 @@
 
         // Event Modal Controls
         function openEventModal() {
-            const modal = document.getElementById('event-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            document.getElementById('event-modal').classList.remove('hidden');
+            document.getElementById('event-modal').classList.add('flex');
         }
-
         function closeEventModal() {
-            const modal = document.getElementById('event-modal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
+            document.getElementById('event-modal').classList.remove('flex');
+            document.getElementById('event-modal').classList.add('hidden');
         }
 
-        // Lightbox Gallery Controls
-        function openLightbox(imgSrc, caption) {
-            const lightbox = document.getElementById('lightbox-modal');
-            const img = document.getElementById('lightbox-img');
-            const cap = document.getElementById('lightbox-caption');
-            img.src = imgSrc;
-            cap.textContent = caption;
-            lightbox.classList.remove('hidden');
-            lightbox.classList.add('flex');
+        // Lightbox Controls
+        function openLightbox(src, caption) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-caption').textContent = caption;
+            document.getElementById('lightbox-modal').classList.remove('hidden');
+            document.getElementById('lightbox-modal').classList.add('flex');
         }
-
         function closeLightbox() {
-            const lightbox = document.getElementById('lightbox-modal');
-            lightbox.classList.remove('flex');
-            lightbox.classList.add('hidden');
+            document.getElementById('lightbox-modal').classList.remove('flex');
+            document.getElementById('lightbox-modal').classList.add('hidden');
         }
 
-        // Toast Notification System
+        // Toast Notification
         function showToast(message) {
-            const toast = document.getElementById('toast-container');
-            const msg = document.getElementById('toast-message');
-            msg.textContent = message;
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-            
+            const container = document.getElementById('toast-container');
+            const msgEl = document.getElementById('toast-message');
+            msgEl.textContent = message;
+            container.classList.remove('translate-y-20', 'opacity-0');
+            container.classList.add('translate-y-0', 'opacity-100');
             setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3500);
+                container.classList.remove('translate-y-0', 'opacity-100');
+                container.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
         }
     </script>
 </body>
