@@ -125,7 +125,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="grid md:grid-cols-12 gap-12 items-center">
                     
-                    <div class="md:col-span-7 text-center md:text-left space-y-6">
+                    <div class="md:col-span-12 text-center space-y-6 max-w-3xl mx-auto">
                         <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-gold-400 font-semibold text-sm shadow-sm">
                             <i class="fa-solid fa-hands-holding-child"></i>
                             <span>Pagkakaisa · Unity</span>
@@ -133,8 +133,73 @@
                         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight">
                             Connecting <span class="gold-gradient-text">Culture & Community</span> in Sioux Lookout
                         </h1>
-                        <p class="text-gray-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                        <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
                             Fostering fellowship, celebrating rich heritage, and empowering Filipinos in Northwestern Ontario. Open to all nationalities around the globe through community engagement and cultural harmony.
                         </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-                            <a href="
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                            <a href="#events" class="bg-gold-500 hover:bg-gold-600 text-navy-900 font-bold px-8 py-3.5 rounded-xl shadow-lg transition-all duration-300 hover:scale-105">
+                                Explore Events
+                            </a>
+                            <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-8 py-3.5 rounded-xl backdrop-blur-md transition-all duration-300">
+                                Join Community Group
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section Placeholder -->
+        <section id="about" class="py-16 px-4 max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl font-serif font-bold text-navy-900 mb-4">About Us</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Content and community details coming soon.</p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 text-white py-8 border-t border-navy-800 text-center text-sm">
+        <p>&copy; 2026 Sioux Lookout Filipino-Canadian Society (SLFCS). All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu & Toast -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const msgEl = document.getElementById('toast-message');
+            msgEl.textContent = message;
+            container.classList.remove('translate-y-20', 'opacity-0');
+            container.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                container.classList.remove('translate-y-0', 'opacity-100');
+                container.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
