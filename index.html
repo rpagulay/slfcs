@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -448,7 +448,7 @@
                         <span class="text-xs text-gray-400">Click any photo to enlarge</span>
                     </div>
 
-                    <!-- Halloween Grid (All 74 Files Loaded) -->
+                    <!-- Halloween Grid (All 74 Files Loaded with lowercase "halloween/") -->
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                         <script>
                             const halloweenFiles = [
@@ -528,10 +528,11 @@
                                 "900639041_29292915926871282_6904951441812149852_n.jpg"
                             ];
 
+                            // Updated to lowercase "halloween/" path
                             halloweenFiles.forEach((file, index) => {
                                 document.write(`
-                                    <div onclick="openLightbox('Halloween/${file}', 'Halloween 2026 // Photo ${index + 1} of 74')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
-                                        <img src="Halloween/${file}" alt="Halloween Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                    <div onclick="openLightbox('halloween/${file}', 'Halloween 2026 // Photo ${index + 1} of 74')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                                        <img src="halloween/${file}" alt="Halloween Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                         <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
                                             <span class="text-gold-400 text-xs font-bold">Halloween Event (${index + 1}/74)</span>
                                         </div>
