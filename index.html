@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <title>Sioux Lookout Filipino-Canadian Society | Pagkakaisa · Unity</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter & Playfair Display -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -21,6 +21,7 @@
                         navy: {
                             800: '#134074',
                             900: '#0B2545',
+                            950: '#050c1a',
                         },
                         gold: {
                             400: '#F5D061',
@@ -43,208 +44,178 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .hero-pattern {
-            background-color: #0B2545;
-            background-image: radial-gradient(#134074 0.75px, transparent 0.75px), radial-gradient(#134074 0.75px, #0B2545 0.75px);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
+        .cyber-grid {
+            background-color: #050c1a;
+            background-image: radial-gradient(rgba(245, 208, 97, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .glass-card {
+            background: rgba(11, 37, 69, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(245, 208, 97, 0.2);
+        }
+        .gallery-item {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+<body class="bg-navy-950 text-gray-100 font-sans antialiased flex flex-col min-h-screen">
 
-    <!-- Toast Notification Container -->
+    <!-- Toast Notification -->
     <div id="toast-container" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
         <div class="bg-navy-900 text-white px-6 py-3 rounded-xl shadow-2xl border border-gold-400 flex items-center gap-3">
             <i class="fa-solid fa-circle-check text-gold-400 text-lg"></i>
-            <span id="toast-message" class="text-sm font-medium">Redirecting to Facebook Group...</span>
+            <span id="toast-message" class="text-sm font-medium">Redirecting...</span>
         </div>
     </div>
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-brandRed text-white text-xs md:text-sm py-2 px-4 text-center font-medium">
+    <!-- Top Cyber Bar -->
+    <div class="bg-gradient-to-r from-navy-900 via-brandRed to-navy-900 text-white text-xs md:text-sm py-2 px-4 text-center font-medium border-b border-gold-400/20">
         <span class="inline-block bg-white/20 rounded-full px-2 py-0.5 text-xs mr-2">Est. 2026</span>
-        <span>Mabuhay! Welcome to the official digital home of the Sioux Lookout Filipino-Canadian Society (SLFCS).</span>
+        <span>Mabuhay! Welcome to the digital nexus of the Sioux Lookout Filipino-Canadian Society.</span>
     </div>
 
     <!-- Navigation Bar -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <header class="sticky top-0 z-40 bg-navy-950/90 backdrop-blur-md border-b border-gold-400/20 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo & Brand Name -->
                 <a href="#home" class="flex items-center gap-3 group">
-                    <img src="logo.jpg" alt="Sioux Lookout Filipino-Canadian Society Logo" class="h-12 w-12 object-cover rounded-full shadow-sm border border-gray-200 group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/100x100/0B2545/F5D061?text=SLFCS'">
+                    <img src="logo.jpg" alt="SLFCS Logo" class="h-12 w-12 object-cover rounded-full shadow-md border-2 border-gold-400 group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/100x100/0B2545/F5D061?text=SLFCS'">
                     <div>
-                        <span class="block font-serif font-bold text-lg md:text-xl text-navy-900 leading-tight">Sioux Lookout</span>
-                        <span class="block text-xs md:text-sm font-semibold tracking-wider text-brandRed uppercase">Filipino-Canadian Society</span>
+                        <span class="block font-serif font-bold text-lg md:text-xl text-white leading-tight">Sioux Lookout</span>
+                        <span class="block text-xs md:text-sm font-semibold tracking-wider text-gold-400 uppercase">Filipino-Canadian Society</span>
                     </div>
                 </a>
 
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-gray-700">
-                    <a href="#home" class="nav-link hover:text-brandRed transition-colors">Home</a>
-                    <a href="#about" class="nav-link hover:text-brandRed transition-colors">About Us</a>
-                    <a href="#events" class="nav-link hover:text-brandRed transition-colors">Events</a>
-                    <a href="#video" class="nav-link hover:text-brandRed transition-colors">Featured Reel</a>
-                    <a href="#gallery" class="nav-link hover:text-brandRed transition-colors">Gallery</a>
-                    <a href="#contact" class="nav-link hover:text-brandRed transition-colors">Contact</a>
-                    <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="w-10 h-10 bg-navy-900 text-white rounded-full flex items-center justify-center hover:bg-brandRed transition-all duration-300 shadow-sm hover:scale-110" title="Join our Facebook Group">
+                <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-gray-200">
+                    <a href="#home" class="hover:text-gold-400 transition-colors">Home</a>
+                    <a href="#about" class="hover:text-gold-400 transition-colors">About Us</a>
+                    <a href="#events" class="hover:text-gold-400 transition-colors">Events</a>
+                    <a href="#video" class="hover:text-gold-400 transition-colors">Featured Reel</a>
+                    <a href="#gallery" class="hover:text-gold-400 transition-colors">Galleries</a>
+                    <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
+                    <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="w-10 h-10 bg-brandRed text-white rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-navy-950 transition-all duration-300 shadow-lg hover:scale-110" title="Join Facebook Group">
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
                 </nav>
 
-                <!-- Mobile Menu Toggle Button -->
                 <div class="flex md:hidden items-center gap-4">
-                    <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="w-9 h-9 bg-navy-900 text-white rounded-full flex items-center justify-center text-sm shadow-sm">
+                    <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="w-9 h-9 bg-brandRed text-white rounded-full flex items-center justify-center text-sm shadow-md">
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
-                    <button id="mobile-menu-button" type="button" class="text-gray-700 hover:text-navy-900 focus:outline-none p-2" aria-label="Toggle Menu">
+                    <button id="mobile-menu-button" type="button" class="text-white hover:text-gold-400 focus:outline-none p-2" aria-label="Toggle Menu">
                         <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3 shadow-lg">
-            <a href="#home" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Home</a>
-            <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">About Us</a>
-            <a href="#events" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Events</a>
-            <a href="#video" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Featured Reel</a>
-            <a href="#gallery" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Gallery</a>
-            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brandRed">Contact</a>
-            <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="mobile-link block px-3 py-2 text-center rounded-md text-base font-medium bg-navy-900 text-white hover:bg-brandRed">Facebook Group</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-900 border-b border-gold-400/20 px-4 pt-2 pb-6 space-y-3 shadow-2xl">
+            <a href="#home" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-navy-800 hover:text-gold-400">Home</a>
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-navy-800 hover:text-gold-400">About Us</a>
+            <a href="#events" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-navy-800 hover:text-gold-400">Events</a>
+            <a href="#video" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-navy-800 hover:text-gold-400">Featured Reel</a>
+            <a href="#gallery" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-navy-800 hover:text-gold-400">Galleries</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-navy-800 hover:text-gold-400">Contact</a>
         </div>
     </header>
 
-    <!-- Main Content Area -->
     <main class="flex-grow">
-
         <!-- Hero Section -->
-        <section id="home" class="relative hero-pattern text-white py-20 md:py-28 overflow-hidden">
+        <section id="home" class="relative cyber-grid text-white py-24 md:py-32 overflow-hidden border-b border-gold-400/20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="grid md:grid-cols-12 gap-12 items-center">
-                    
                     <div class="md:col-span-7 text-center md:text-left space-y-6">
-                        <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-gold-400 font-semibold text-sm shadow-sm">
-                            <i class="fa-solid fa-hands-holding-child"></i>
-                            <span>Pagkakaisa · Unity</span>
+                        <div class="inline-flex items-center gap-2 bg-gold-400/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-gold-400/30 text-gold-400 font-semibold text-sm shadow-lg">
+                            <i class="fa-solid fa-microchip"></i>
+                            <span>Pagkakaisa · Unity Nexus</span>
                         </div>
                         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight">
                             Connecting <span class="gold-gradient-text">Culture & Community</span> in Sioux Lookout
                         </h1>
                         <p class="text-gray-300 text-base sm:text-lg max-w-2xl leading-relaxed">
-                            Fostering fellowship, celebrating rich heritage, and empowering Filipinos in Northwestern Ontario. Open to all nationalities around the globe through community engagement and cultural harmony.
+                            Fostering fellowship, celebrating rich heritage, and empowering Filipinos across Northwestern Ontario through futuristic engagement and cultural harmony. Open to all nationalities.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-                            <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="inline-flex items-center justify-center px-8 py-3.5 border border-transparent font-medium rounded-full text-navy-900 bg-gold-400 hover:bg-gold-500 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+                            <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="inline-flex items-center justify-center px-8 py-3.5 font-semibold rounded-full text-navy-950 bg-gold-400 hover:bg-gold-500 shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
                                 <i class="fa-brands fa-facebook mr-2"></i> Join Facebook Group
                             </a>
-                            <a href="#events" class="inline-flex items-center justify-center px-8 py-3.5 border border-white/30 font-medium rounded-full text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105">
+                            <a href="#events" class="inline-flex items-center justify-center px-8 py-3.5 font-semibold rounded-full text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 transition-all duration-300">
                                 <i class="fa-regular fa-calendar-check mr-2"></i> Upcoming Events
                             </a>
                         </div>
                     </div>
 
-                    <!-- Logo Showcase Card -->
                     <div class="md:col-span-5 flex justify-center">
                         <div class="relative group">
-                            <div class="absolute -inset-1 bg-gradient-to-r from-gold-400 via-brandRed to-gold-500 rounded-full blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
-                            <div class="relative bg-white p-6 rounded-3xl shadow-2xl border-4 border-gold-400 max-w-sm text-center transform group-hover:-translate-y-2 transition-transform duration-500">
-                                <img src="logo.jpg" alt="Sioux Lookout Filipino-Canadian Society Emblem" class="w-64 h-64 mx-auto object-cover rounded-2xl drop-shadow-md" onerror="this.src='https://placehold.co/300x300/0B2545/F5D061?text=SLFCS+Logo'">
-                                <div class="mt-4 pt-4 border-t border-gray-100">
-                                    <h3 class="font-serif font-bold text-navy-900 text-lg">Sioux Lookout, Ontario</h3>
-                                    <p class="text-xs text-gray-500 font-medium mt-1">ESTABLISHED 2026</p>
+                            <div class="absolute -inset-1 bg-gradient-to-r from-gold-400 via-brandRed to-gold-500 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition duration-500"></div>
+                            <div class="relative glass-card p-6 rounded-3xl shadow-2xl max-w-sm text-center">
+                                <img src="logo.jpg" alt="SLFCS Emblem" class="w-64 h-64 mx-auto object-cover rounded-2xl border-2 border-gold-400/50 shadow-inner" onerror="this.src='https://placehold.co/300x300/0B2545/F5D061?text=SLFCS+Logo'">
+                                <div class="mt-4 pt-4 border-t border-gold-400/20">
+                                    <h3 class="font-serif font-bold text-gold-400 text-lg">Sioux Lookout, Ontario</h3>
+                                    <p class="text-xs text-gray-400 font-medium mt-1 uppercase tracking-widest">ESTABLISHED 2026</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- Quick Stats Banner -->
-        <section class="bg-navy-800 text-white py-6 border-t border-b border-navy-700 shadow-inner">
+        <!-- Stats Bar -->
+        <section class="bg-navy-900 text-white py-6 border-b border-gold-400/20 shadow-inner">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                    <div class="p-2 transform hover:scale-105 transition-transform">
-                        <p class="text-3xl font-bold text-gold-400 font-serif">100%</p>
-                        <p class="text-xs sm:text-sm text-gray-300">Volunteer Powered</p>
-                    </div>
-                    <div class="p-2 transform hover:scale-105 transition-transform">
-                        <p class="text-3xl font-bold text-gold-400 font-serif">Ontario</p>
-                        <p class="text-xs sm:text-sm text-gray-300">Sioux Lookout Region</p>
-                    </div>
-                    <div class="p-2 transform hover:scale-105 transition-transform">
-                        <p class="text-3xl font-bold text-gold-400 font-serif">Year-Round</p>
-                        <p class="text-xs sm:text-sm text-gray-300">Cultural & Social Events</p>
-                    </div>
-                    <div class="p-2 transform hover:scale-105 transition-transform">
-                        <p class="text-3xl font-bold text-gold-400 font-serif">Global</p>
-                        <p class="text-xs sm:text-sm text-gray-300">Open to All Nationalities</p>
-                    </div>
+                    <div class="p-2"><p class="text-3xl font-bold text-gold-400 font-serif">100%</p><p class="text-xs text-gray-300">Volunteer Powered</p></div>
+                    <div class="p-2"><p class="text-3xl font-bold text-gold-400 font-serif">Ontario</p><p class="text-xs text-gray-300">Sioux Lookout Region</p></div>
+                    <div class="p-2"><p class="text-3xl font-bold text-gold-400 font-serif">Year-Round</p><p class="text-xs text-gray-300">Cultural & Social Events</p></div>
+                    <div class="p-2"><p class="text-3xl font-bold text-gold-400 font-serif">Global</p><p class="text-xs text-gray-300">Open to All Nationalities</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- About Us Section -->
-        <section id="about" class="py-20 bg-white">
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-navy-950">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">About Our Society</h2>
-                    <p class="mt-2 text-3xl sm:text-4xl font-serif font-bold text-navy-900">Rooted in Unity, Caring for Community</p>
+                    <h2 class="text-xs font-bold tracking-widest text-gold-400 uppercase">About Our Society</h2>
+                    <p class="mt-2 text-3xl sm:text-4xl font-serif font-bold text-white">Rooted in Unity, Caring for Community</p>
                     <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-gold-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                        <div class="w-12 h-12 bg-navy-900 text-gold-400 rounded-xl flex items-center justify-center text-xl mb-6 shadow-sm">
-                            <i class="fa-solid fa-compass"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 font-serif mb-3">Our Mission</h3>
-                        <p class="text-gray-600 leading-relaxed text-sm">
-                            To bring together Filipinos and friends of all nationalities in Sioux Lookout, promoting cultural preservation, mutual support, integration, and community development.
-                        </p>
+                    <div class="glass-card rounded-2xl p-8 hover:border-gold-400 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-navy-900 text-gold-400 border border-gold-400/30 rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-compass"></i></div>
+                        <h3 class="text-xl font-bold text-white font-serif mb-3">Our Mission</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">To bring together Filipinos and friends of all nationalities in Sioux Lookout, promoting cultural preservation, mutual support, and community development.</p>
                     </div>
-
-                    <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-gold-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                        <div class="w-12 h-12 bg-brandRed text-white rounded-xl flex items-center justify-center text-xl mb-6 shadow-sm">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 font-serif mb-3">Bayanihan Spirit</h3>
-                        <p class="text-gray-600 leading-relaxed text-sm">
-                            We embody the cherished tradition of <em>Bayanihan</em>—communal unity and cooperation—helping newcomers from around the globe settle comfortably in Northern Ontario.
-                        </p>
+                    <div class="glass-card rounded-2xl p-8 hover:border-gold-400 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-brandRed text-white rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-heart"></i></div>
+                        <h3 class="text-xl font-bold text-white font-serif mb-3">Bayanihan Spirit</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">We embody the cherished tradition of <em>Bayanihan</em>—communal unity and cooperation—helping newcomers settle comfortably in Northern Ontario.</p>
                     </div>
-
-                    <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-gold-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                        <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-xl flex items-center justify-center text-xl mb-6 shadow-sm">
-                            <i class="fa-solid fa-people-group"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 font-serif mb-3">Cultural Heritage</h3>
-                        <p class="text-gray-600 leading-relaxed text-sm">
-                            Celebrating Philippine heritage while welcoming residents of all nationalities to contribute to the wonderful multicultural tapestry of Sioux Lookout.
-                        </p>
+                    <div class="glass-card rounded-2xl p-8 hover:border-gold-400 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-gold-500 text-navy-950 rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-people-group"></i></div>
+                        <h3 class="text-xl font-bold text-white font-serif mb-3">Cultural Heritage</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Celebrating Philippine heritage while welcoming residents of all nationalities to contribute to the wonderful multicultural tapestry of Sioux Lookout.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Upcoming Events Section -->
-        <section id="events" class="py-20 bg-gray-50">
+        <!-- Events Section -->
+        <section id="events" class="py-20 bg-navy-900/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                     <div>
-                        <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Gatherings & Activities</h2>
-                        <p class="mt-2 text-3xl font-serif font-bold text-navy-900">Upcoming Events</p>
+                        <h2 class="text-xs font-bold tracking-widest text-gold-400 uppercase">Gatherings & Activities</h2>
+                        <p class="mt-2 text-3xl font-serif font-bold text-white">Upcoming Events</p>
                     </div>
-                    <p class="text-gray-500 text-sm mt-2 md:mt-0">Click the event card for full details and calendar scheduling.</p>
+                    <p class="text-gray-400 text-sm mt-2 md:mt-0">Click the event card for full details and calendar scheduling.</p>
                 </div>
 
-                <!-- Events Grid (Interactive Christmas Party Card) -->
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div onclick="openEventModal()" class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col cursor-pointer transform hover:-translate-y-1 group">
+                    <div onclick="openEventModal()" class="glass-card rounded-2xl overflow-hidden hover:border-gold-400 transition-all duration-300 flex flex-col cursor-pointer transform hover:-translate-y-1 group">
                         <div class="bg-brandRed p-6 text-white relative">
                             <span class="absolute top-4 right-4 bg-white text-brandRed text-xs font-bold px-3 py-1 rounded-full uppercase shadow-sm">Social</span>
                             <div class="text-3xl font-bold font-serif text-white group-hover:scale-105 transition-transform">12</div>
@@ -252,14 +223,12 @@
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
                             <div>
-                                <h3 class="font-bold text-lg text-navy-900 mb-2 font-serif group-hover:text-brandRed transition-colors">Christmas Party 2026 <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1 text-gray-400"></i></h3>
-                                <p class="text-gray-600 text-sm">
-                                    Celebrate the festive season with our community! Join us for an evening of delicious food, holiday music, games, and fellowship.
-                                </p>
+                                <h3 class="font-bold text-lg text-white mb-2 font-serif group-hover:text-gold-400 transition-colors">Christmas Party 2026 <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1 text-gold-400"></i></h3>
+                                <p class="text-gray-300 text-sm">Celebrate the festive season with our community! Join us for an evening of delicious food, holiday music, games, and fellowship.</p>
                             </div>
-                            <div class="pt-4 border-t border-gray-100 space-y-2 text-xs text-gray-500">
-                                <div class="flex items-start gap-2"><i class="fa-solid fa-location-dot w-5 text-brandRed mt-0.5"></i> <span>Royal Canadian Legion Branch 78<br>86 Front St, Sioux Lookout, ON P8T 1A3</span></div>
-                                <div class="flex items-center"><i class="fa-regular fa-clock w-5 text-brandRed"></i> 6:00 PM (18:00)</div>
+                            <div class="pt-4 border-t border-gold-400/20 space-y-2 text-xs text-gray-300">
+                                <div class="flex items-start gap-2"><i class="fa-solid fa-location-dot w-5 text-gold-400 mt-0.5"></i> <span>Royal Canadian Legion Branch 78<br>86 Front St, Sioux Lookout, ON P8T 1A3</span></div>
+                                <div class="flex items-center"><i class="fa-regular fa-clock w-5 text-gold-400"></i> 6:00 PM (18:00)</div>
                             </div>
                         </div>
                     </div>
@@ -267,229 +236,339 @@
             </div>
         </section>
 
-        <!-- Featured Video / Reel Section (Rheanne Jaravata Spotlight) -->
-        <section id="video" class="py-20 bg-white">
+        <!-- Featured Reel Section -->
+        <section id="video" class="py-20 bg-navy-950">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-12">
-                    <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Community Spotlight & Pride</h2>
-                    <p class="mt-2 text-3xl font-serif font-bold text-navy-900">Featured Facebook Reel</p>
+                    <h2 class="text-xs font-bold tracking-widest text-gold-400 uppercase">Community Spotlight & Pride</h2>
+                    <p class="mt-2 text-3xl font-serif font-bold text-white">Featured Facebook Reel</p>
                     <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
                 </div>
 
-                <div class="max-w-xl mx-auto bg-gradient-to-br from-navy-900 to-navy-800 text-white rounded-3xl p-8 shadow-2xl border border-gold-400/30 text-center space-y-6 transform hover:scale-[1.01] transition-transform relative overflow-hidden">
-                    <div class="absolute -right-10 -bottom-10 text-white/5 text-9xl font-bold pointer-events-none">
-                        <i class="fa-solid fa-hockey-puck"></i>
-                    </div>
-                    
+                <div class="max-w-xl mx-auto glass-card text-white rounded-3xl p-8 shadow-2xl border border-gold-400/40 text-center space-y-6 relative overflow-hidden">
                     <div class="inline-flex items-center gap-2 bg-gold-400/20 text-gold-400 px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-gold-400/30">
                         <i class="fa-solid fa-star"></i> Game Day Pride
                     </div>
-
                     <div class="space-y-3">
                         <h3 class="font-serif font-bold text-2xl text-gold-400 leading-snug">Rheanne Jaravata Sings O Canada at The Hangar!</h3>
                         <p class="text-gray-200 text-sm md:text-base leading-relaxed">
                             What a moment! Our very own <strong class="text-white font-semibold">Rheanne Jaravata</strong> beautifully sang <em>O Canada</em> before the Sioux Lookout Bombers took on the Ironwood Lumberjacks at the Hangar — leading the Bombers on to a thrilling 13-1 victory! 🎵🏒
                         </p>
-                        <p class="text-gold-300 text-xs italic pt-1">
-                            "So proud of you, Rheanne — you represented our community so beautifully. Maraming salamat! ❤️"
-                        </p>
                     </div>
-
-                    <div class="pt-2 flex flex-wrap justify-center gap-2 text-xs font-medium text-red-200">
-                        <span class="bg-white/10 px-3 py-1 rounded-full">#GoBombersGo</span>
-                        <span class="bg-white/10 px-3 py-1 rounded-full">#SiouxLookoutBombers</span>
-                        <span class="bg-white/10 px-3 py-1 rounded-full">#SLKTFilipinoCandianSociety</span>
-                    </div>
-
-                    <a href="https://www.facebook.com/reel/4689929651325224" target="_blank" onclick="showToast('Opening Facebook Reel...')" class="inline-flex items-center justify-center w-full py-4 bg-brandRed hover:bg-gold-500 hover:text-navy-900 text-white font-bold rounded-2xl transition-all duration-300 shadow-lg text-base">
+                    <a href="https://www.facebook.com/reel/4689929651325224" target="_blank" onclick="showToast('Opening Facebook Reel...')" class="inline-flex items-center justify-center w-full py-4 bg-brandRed hover:bg-gold-500 hover:text-navy-950 text-white font-bold rounded-2xl transition-all duration-300 shadow-lg text-base">
                         <i class="fa-solid fa-film mr-2 text-lg"></i> Watch Full Reel on Facebook
                     </a>
                 </div>
             </div>
         </section>
 
-       <!-- Photo Gallery Section (All Trunk Or Treat Photos) -->
-        <section id="gallery" class="py-20 bg-gray-50">
+        <!-- Multi-Album Interactive Gallery Section -->
+        <section id="gallery" class="py-20 bg-navy-900/40 border-t border-b border-gold-400/20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Community Memories</h2>
-                    <p class="mt-2 text-3xl font-serif font-bold text-navy-900">Trunk Or Treat 2026</p>
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <h2 class="text-xs font-bold tracking-widest text-gold-400 uppercase">Community Memories</h2>
+                    <p class="mt-2 text-3xl sm:text-4xl font-serif font-bold text-white">Event Photo Galleries</p>
                     <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
-                    <p class="text-gray-500 text-sm mt-3">Click any photo to view in full screen.</p>
+                    <p class="text-gray-400 text-sm mt-3">Browse our community photo albums. Switch between events below or click any photo to inspect full screen.</p>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <!-- Photo 1 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/0575c8da-e9c6-4823-9836-344042304cea.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/0575c8da-e9c6-4823-9836-344042304cea.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
-                        </div>
+                <!-- Album Selector Tabs -->
+                <div class="flex justify-center gap-4 mb-8">
+                    <button onclick="switchAlbum('trunk')" id="album-btn-trunk" class="px-6 py-3 rounded-2xl font-bold text-sm bg-gold-400 text-navy-950 shadow-xl transition-all duration-300 flex items-center gap-2">
+                        <i class="fa-solid fa-car"></i> Trunk Or Treat 2026 (22 Photos)
+                    </button>
+                    <button onclick="switchAlbum('halloween')" id="album-btn-halloween" class="px-6 py-3 rounded-2xl font-bold text-sm bg-navy-900 text-gray-300 border border-gold-400/30 shadow-md transition-all duration-300 flex items-center gap-2 hover:bg-gold-400 hover:text-navy-950">
+                        <i class="fa-solid fa-ghost"></i> Halloween Album (74 Photos)
+                    </button>
+                </div>
+
+                <!-- Trunk Or Treat Album Container -->
+                <div id="album-trunk" class="album-container">
+                    <div class="flex items-center justify-between mb-8 bg-navy-950/60 p-4 rounded-2xl border border-gold-400/20">
+                        <span class="text-xs text-gold-400 font-medium">Trunk Or Treat 2026 Collection (22 Photos)</span>
+                        <span class="text-xs text-gray-400">Click any photo to enlarge</span>
                     </div>
-                    <!-- Photo 2 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/0fab685e-33c5-42d5-ad55-d50055a33597.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/0fab685e-33c5-42d5-ad55-d50055a33597.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+
+                    <!-- Trunk Grid (22 Photos) -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                        <!-- Photo 1 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/0575c8da-e9c6-4823-9836-344042304cea.jpg', 'Trunk Or Treat 2026 // Photo 1 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/0575c8da-e9c6-4823-9836-344042304cea.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (1/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 3 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/1f25b558-eb39-4c10-91f9-2c379b0b52be.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/1f25b558-eb39-4c10-91f9-2c379b0b52be.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 2 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/0fab685e-33c5-42d5-ad55-d50055a33597.jpg', 'Trunk Or Treat 2026 // Photo 2 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/0fab685e-33c5-42d5-ad55-d50055a33597.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (2/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 4 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/6063a020-23c9-459c-abfc-f64377a59074.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/6063a020-23c9-459c-abfc-f64377a59074.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 3 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/1f25b558-eb39-4c10-91f9-2c379b0b52be.jpg', 'Trunk Or Treat 2026 // Photo 3 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/1f25b558-eb39-4c10-91f9-2c379b0b52be.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (3/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 5 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/689313d3-15de-4d64-af5e-3d4ef5b7681e.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/689313d3-15de-4d64-af5e-3d4ef5b7681e.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 4 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/6063a020-23c9-459c-abfc-f64377a59074.jpg', 'Trunk Or Treat 2026 // Photo 4 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/6063a020-23c9-459c-abfc-f64377a59074.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (4/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 6 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/6a5138ca-b4a2-433c-b850-35d6b28df35c.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/6a5138ca-b4a2-433c-b850-35d6b28df35c.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 5 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/689313d3-15de-4d64-af5e-3d4ef5b7681e.jpg', 'Trunk Or Treat 2026 // Photo 5 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/689313d3-15de-4d64-af5e-3d4ef5b7681e.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (5/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 7 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/7d27e450-dfbd-4a48-a55d-6dd7e287509e.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/7d27e450-dfbd-4a48-a55d-6dd7e287509e.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 6 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/6a5138ca-b4a2-433c-b850-35d6b28df35c.jpg', 'Trunk Or Treat 2026 // Photo 6 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/6a5138ca-b4a2-433c-b850-35d6b28df35c.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (6/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 8 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/87311165-5d5e-45cf-b26d-47a74595a6df.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/87311165-5d5e-45cf-b26d-47a74595a6df.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 7 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/7d27e450-dfbd-4a48-a55d-6dd7e287509e.jpg', 'Trunk Or Treat 2026 // Photo 7 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/7d27e450-dfbd-4a48-a55d-6dd7e287509e.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (7/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 9 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/897218814_29291780753751466_4664742260203244952_n.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/897218814_29291780753751466_4664742260203244952_n.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 8 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/87311165-5d5e-45cf-b26d-47a74595a6df.jpg', 'Trunk Or Treat 2026 // Photo 8 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/87311165-5d5e-45cf-b26d-47a74595a6df.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (8/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 10 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/897347167_29291781167084758_5799250873563814336_n.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/897347167_29291781167084758_5799250873563814336_n.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 9 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/897218814_29291780753751466_4664742260203244952_n.jpg', 'Trunk Or Treat 2026 // Photo 9 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/897218814_29291780753751466_4664742260203244952_n.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (9/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 11 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/897347184_29291786053750936_967389010995390510_n.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/897347184_29291786053750936_967389010995390510_n.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 10 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/897347167_29291781167084758_5799250873563814336_n.jpg', 'Trunk Or Treat 2026 // Photo 10 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/897347167_29291781167084758_5799250873563814336_n.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (10/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 12 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/897438795_29291785787084296_4521668909600518207_n.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/897438795_29291785787084296_4521668909600518207_n.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 11 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/897347184_29291786053750936_967389010995390510_n.jpg', 'Trunk Or Treat 2026 // Photo 11 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/897347184_29291786053750936_967389010995390510_n.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (11/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 13 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/897438817_29291782800417928_2914337894125143167_n.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/897438817_29291782800417928_2914337894125143167_n.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 12 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/897438795_29291785787084296_4521668909600518207_n.jpg', 'Trunk Or Treat 2026 // Photo 12 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/897438795_29291785787084296_4521668909600518207_n.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (12/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 15 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/897510099_29291785263751015_4998015551990201356_n.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/897510099_29291785263751015_4998015551990201356_n.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 13 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/897438817_29291782800417928_2914337894125143167_n.jpg', 'Trunk Or Treat 2026 // Photo 13 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/897438817_29291782800417928_2914337894125143167_n.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (13/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 16 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/897607911_29291783903751151_2344237823553010784_n.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/897607911_29291783903751151_2344237823553010784_n.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 14 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/897438836_29291782353751306_325219343223005315_n.jpg', 'Trunk Or Treat 2026 // Photo 14 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/897438836_29291782353751306_325219343223005315_n.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (14/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 17 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/897673535_29291783130417895_4153680537263451205_n.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/897673535_29291783130417895_4153680537263451205_n.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 15 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/897510099_29291785263751015_4998015551990201356_n.jpg', 'Trunk Or Treat 2026 // Photo 15 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/897510099_29291785263751015_4998015551990201356_n.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (15/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 18 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/898298712_29291786327084242_4383379141111913212_n.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/898298712_29291786327084242_4383379141111913212_n.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 16 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/897607911_29291783903751151_2344237823553010784_n.jpg', 'Trunk Or Treat 2026 // Photo 16 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/897607911_29291783903751151_2344237823553010784_n.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (16/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 19 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/899196630_29291784713751070_3425510671427269753_n.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/899196630_29291784713751070_3425510671427269753_n.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 17 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/897673535_29291783130417895_4153680537263451205_n.jpg', 'Trunk Or Treat 2026 // Photo 17 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/897673535_29291783130417895_4153680537263451205_n.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (17/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 20 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/899598219_29291780563751485_2030221506999197330_n.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/899598219_29291780563751485_2030221506999197330_n.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 18 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/898298712_29291786327084242_4383379141111913212_n.jpg', 'Trunk Or Treat 2026 // Photo 18 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/898298712_29291786327084242_4383379141111913212_n.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (18/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 21 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/8f709af3-fd2b-4743-a592-808956bdb4f3.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/8f709af3-fd2b-4743-a592-808956bdb4f3.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 19 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/899196630_29291784713751070_3425510671427269753_n.jpg', 'Trunk Or Treat 2026 // Photo 19 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/899196630_29291784713751070_3425510671427269753_n.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (19/22)</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Photo 22 -->
-                    <div onclick="openLightbox('Trunk%20Or%20Treat/ce1b326c-ec3f-446f-a4d3-75ddbf09b20f.jpg', 'Trunk Or Treat 2026')" class="relative group aspect-square rounded-2xl overflow-hidden bg-navy-900 shadow-md cursor-pointer">
-                        <img src="Trunk%20Or%20Treat/ce1b326c-ec3f-446f-a4d3-75ddbf09b20f.jpg" alt="Trunk Or Treat Event Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <span class="text-white text-xs font-medium"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Trunk Or Treat</span>
+                        <!-- Photo 20 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/899598219_29291780563751485_2030221506999197330_n.jpg', 'Trunk Or Treat 2026 // Photo 20 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/899598219_29291780563751485_2030221506999197330_n.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (20/22)</span>
+                            </div>
+                        </div>
+                        <!-- Photo 21 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/8f709af3-fd2b-4743-a592-808956bdb4f3.jpg', 'Trunk Or Treat 2026 // Photo 21 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/8f709af3-fd2b-4743-a592-808956bdb4f3.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (21/22)</span>
+                            </div>
+                        </div>
+                        <!-- Photo 22 -->
+                        <div onclick="openLightbox('Trunk%20Or%20Treat/ce1b326c-ec3f-446f-a4d3-75ddbf09b20f.jpg', 'Trunk Or Treat 2026 // Photo 22 of 22')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                            <img src="Trunk%20Or%20Treat/ce1b326c-ec3f-446f-a4d3-75ddbf09b20f.jpg" alt="Trunk Or Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                <span class="text-gold-400 text-xs font-bold">Trunk Or Treat (22/22)</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Halloween Album Container (74 Photos) -->
+                <div id="album-halloween" class="album-container hidden">
+                    <div class="flex items-center justify-between mb-8 bg-navy-950/60 p-4 rounded-2xl border border-gold-400/20">
+                        <span class="text-xs text-gold-400 font-medium">Halloween 2026 Collection (74 Photos)</span>
+                        <span class="text-xs text-gray-400">Click any photo to enlarge</span>
+                    </div>
+
+                    <!-- Halloween Grid (All 74 Files Loaded) -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                        <script>
+                            const halloweenFiles = [
+                                "095091260_29292980153634526_6627416705272858773_n.jpg",
+                                "095257034_29292980358967039_14909092030951761048_n.jpg",
+                                "095503101_29292916789304530_7051322713946114677_n.jpg",
+                                "095677490_29292915106984164_6567714717427591693_n.jpg",
+                                "095677540_29292918210989051_1619132970222081664_n.jpg",
+                                "096205602_29292914470871427_7462997810463944671_n.jpg",
+                                "096300351_29292915766471290_5444996346326791910_n.jpg",
+                                "096379044_29292917900302415_4430562544517377698_n.jpg",
+                                "096666605_29292915643167977_2652610730040113432_n.jpg",
+                                "096785228_29292912890304919_4392038089965268465_n.jpg",
+                                "096826371_29292980543634487_8575306190741255671_n.jpg",
+                                "096826405_29292912590471615_302039567407145391_n.jpg",
+                                "096982240_29292914101636072_4037748091011162657_n.jpg",
+                                "097040507_29292912650304943_8403122529726857912_n.jpg",
+                                "097007148_29292938641365057_4033167585559131194_n.jpg",
+                                "097007401_29292958510301157_2944134431481711320_n.jpg",
+                                "097108807_29292936569688909_4322617168070727008_n.jpg",
+                                "097109813_29292942708679417_2494767522466746279_n.jpg",
+                                "097109888_29292939953625546_8893940426512107548_n.jpg",
+                                "097216368_29292937760902432_1501162193252676623_n.jpg",
+                                "097216361_29292916053617056_7618958927236824975_n.jpg",
+                                "097216398_29292913283618213_7672114059992751170_n.jpg",
+                                "097252995_29292912173618364_1380073402115614386_n.jpg",
+                                "097349029_29292936411635980_1536768080561762710_n.jpg",
+                                "097349043_29292914233638110_238627640947399712_n.jpg",
+                                "097439921_29292913760471500_111525372789362799_n.jpg",
+                                "097439967_29292916969871235_5297250300061085606_n.jpg",
+                                "097440061_29292939150302293_3086130090168736554_n.jpg",
+                                "097466068_29292957109026277_8020793584512558686_n.jpg",
+                                "097509804_29292916223617919_753682011616897096_n.jpg",
+                                "097548617_29292948243634717_788275372361913494_n.jpg",
+                                "097548664_2929291602096272_1649579862727799043_n.jpg",
+                                "097548669_29292915110304617_7279843957324911626_n.jpg",
+                                "097548691_29292916670304541_627338620705019360_n.jpg",
+                                "097644344_29292916050304681_7286506521403765517_n.jpg",
+                                "097671228_29292915210304687_4155209424655921982_n.jpg",
+                                "097704242_29292958123631409_5485891888729775269_n.jpg",
+                                "097704246_29292917193638222_2073994339665096417_n.jpg",
+                                "097726314_29292913860304022_11159483960299991361_n.jpg",
+                                "097750508_29292945436341587_2656179756919208008_n.jpg",
+                                "097761600_2929294790301229_5750331790617053990_n.jpg",
+                                "097761615_29292936670302541_1650817161656956465_n.jpg",
+                                "097775364_29292948903634651_6693806240914261753_n.jpg",
+                                "097775386_29292917580304850_618534594592457610_n.jpg",
+                                "097775423_29292917520302456_6661502431829511774_n.jpg",
+                                "097611798_29292940326968642_1891745624913257182_n.jpg",
+                                "097611825_29292916290304580_6062595546512513111_n.jpg",
+                                "097997141_29292912343638307_7570711191565162220_n.jpg",
+                                "099986005_29292914123618109_3142216102234081792_n.jpg",
+                                "099067029_29292949083634633_1411608559524017445_n.jpg",
+                                "099067039_29292914013638140_2720249589195507616_n.jpg",
+                                "099248808_29292931770689377_8299514642158680909_n.jpg",
+                                "099248884_29292935803684291_4074824518225197605_n.jpg",
+                                "099248945_29292915123638009_8145734099149696065_n.jpg",
+                                "099248963_29292936030302225_3625990084220420220_n.jpg",
+                                "099248971_29292913443638197_7099102978024611361_n.jpg",
+                                "099248988_29292949436380417_2321705279431554629_n.jpg",
+                                "099273215_2929294923634549_5434377786490324509_n.jpg",
+                                "099314126_2929294590304749_5862553495649651172_n.jpg",
+                                "099402297_29292925583625991_1386587511977291979_n.jpg",
+                                "099426547_29292938610808012_42494819041654170259_n.jpg",
+                                "099407121_2929294740301234_2025453492325006470_n.jpg",
+                                "099407160_29292935290302679_8285412644238269155_n.jpg",
+                                "099545977_29292938420302366_6710629589754174413_n.jpg",
+                                "099631028_29292917123615889_62304041411918261712_n.jpg",
+                                "099631046_2929291780304730_2311275790660503633_n.jpg",
+                                "099712308_2929294949067925_6004048516237573282_n.jpg",
+                                "099622564_29292949970867077_6715581861118932732_n.jpg",
+                                "099625978_29292948743634667_5528617412256536482_n.jpg",
+                                "900370238_29292913020304986_3025307295667540817_n.jpg",
+                                "900431074_29292958123614529_5009947562743964287_n.jpg",
+                                "900476343_29292916133617080_2085104277198809411_n.jpg",
+                                "900501176_292929141110304797_607320193754864105_n.jpg",
+                                "900639041_29292915926871282_6904951441812149852_n.jpg"
+                            ];
+
+                            halloweenFiles.forEach((file, index) => {
+                                document.write(`
+                                    <div onclick="openLightbox('Halloween/${file}', 'Halloween 2026 // Photo ${index + 1} of 74')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 hover:ring-4 hover:ring-gold-400">
+                                        <img src="Halloween/${file}" alt="Halloween Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                                            <span class="text-gold-400 text-xs font-bold">Halloween Event (${index + 1}/74)</span>
+                                        </div>
+                                    </div>
+                                `);
+                            });
+                        </script>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
-                <h2 class="text-xs font-bold tracking-widest text-brandRed uppercase">Reach Out</h2>
-                <h3 class="text-3xl font-serif font-bold text-navy-900 mt-2 mb-6">Connect With Us</h3>
-                <p class="text-gray-600 mb-8">
-                    Stay updated on meetings, events, and community activities through our official Facebook group. Everyone around the globe is welcome!
-                </p>
-                <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="inline-flex items-center justify-center px-8 py-4 bg-navy-900 text-white font-bold rounded-full hover:bg-brandRed transition-all duration-300 shadow-lg hover:scale-105">
+        <section id="contact" class="py-20 bg-navy-950 text-center">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-xs font-bold tracking-widest text-gold-400 uppercase">Reach Out</h2>
+                <h3 class="text-3xl font-serif font-bold text-white mt-2 mb-6">Connect With Us</h3>
+                <p class="text-gray-300 mb-8">Stay updated on meetings, events, and community activities through our official Facebook group. Everyone around the globe is welcome!</p>
+                <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="inline-flex items-center justify-center px-8 py-4 bg-gold-400 text-navy-950 font-bold rounded-full hover:bg-gold-500 transition-all duration-300 shadow-xl hover:scale-105">
                     <i class="fa-brands fa-facebook-f mr-3 text-lg"></i> Visit Our Facebook Group
                 </a>
             </div>
         </section>
-
     </main>
 
     <!-- Footer -->
-    <footer class="bg-navy-900 text-white py-12 border-t border-navy-800">
+    <footer class="bg-navy-950 text-white py-12 border-t border-gold-400/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-            <p class="font-serif text-lg font-bold">Sioux Lookout Filipino-Canadian Society</p>
+            <p class="font-serif text-lg font-bold text-gold-400">Sioux Lookout Filipino-Canadian Society</p>
             <p class="text-xs text-gray-400">Pagkakaisa · Unity | Open to All Nationalities | Est. 2026 · Sioux Lookout, Ontario</p>
             <div class="flex justify-center space-x-6 pt-2">
                 <a href="https://www.facebook.com/groups/2558579034617933" target="_blank" onclick="showToast('Opening Facebook Group...')" class="text-gray-400 hover:text-gold-400 transition-colors text-xl">
@@ -500,63 +579,56 @@
         </div>
     </footer>
 
-    <!-- Interactive Event Modal -->
-    <div id="event-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl relative transform transition-all animate-in fade-in zoom-in-95 duration-200">
-            <button onclick="closeEventModal()" class="absolute top-6 right-6 text-gray-400 hover:text-navy-900 text-xl font-bold p-2" aria-label="Close modal">
+    <!-- Event Modal -->
+    <div id="event-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-card rounded-3xl max-w-lg w-full p-8 shadow-2xl relative border border-gold-400">
+            <button onclick="closeEventModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white text-xl font-bold p-2" aria-label="Close">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="inline-block bg-brandRed/10 text-brandRed font-bold text-xs uppercase px-3 py-1 rounded-full mb-3">Featured Event</div>
-            <h3 class="text-2xl font-serif font-bold text-navy-900 mb-2">Christmas Party 2026</h3>
-            <p class="text-gray-600 text-sm mb-6">Celebrate the festive season with our community! Join us for an evening of delicious food, holiday music, games, and fellowship. Open to all members and friends.</p>
+            <div class="inline-block bg-brandRed/20 text-brandRed font-bold text-xs uppercase px-3 py-1 rounded-full mb-3 border border-brandRed/30">Featured Event</div>
+            <h3 class="text-2xl font-serif font-bold text-white mb-2">Christmas Party 2026</h3>
+            <p class="text-gray-300 text-sm mb-6">Celebrate the festive season with our community! Join us for an evening of delicious food, holiday music, games, and fellowship.</p>
             
-            <div class="space-y-3 bg-gray-50 p-4 rounded-2xl mb-6 text-sm text-gray-700">
-                <div class="flex items-start gap-3"><i class="fa-solid fa-calendar-days text-brandRed mt-1"></i> <div><strong>Date:</strong> December 12, 2026</div></div>
-                <div class="flex items-start gap-3"><i class="fa-regular fa-clock text-brandRed mt-1"></i> <div><strong>Time:</strong> 6:00 PM (18:00)</div></div>
-                <div class="flex items-start gap-3"><i class="fa-solid fa-location-dot text-brandRed mt-1"></i> <div><strong>Location:</strong> Royal Canadian Legion Branch 78<br>86 Front St, Sioux Lookout, ON P8T 1A3</div></div>
+            <div class="space-y-3 bg-navy-900/80 p-4 rounded-2xl mb-6 text-sm text-gray-200 border border-gold-400/20">
+                <div class="flex items-start gap-3"><i class="fa-solid fa-calendar-days text-gold-400 mt-1"></i> <div><strong>Date:</strong> December 12, 2026</div></div>
+                <div class="flex items-start gap-3"><i class="fa-regular fa-clock text-gold-400 mt-1"></i> <div><strong>Time:</strong> 6:00 PM (18:00)</div></div>
+                <div class="flex items-start gap-3"><i class="fa-solid fa-location-dot text-gold-400 mt-1"></i> <div><strong>Location:</strong> Royal Canadian Legion Branch 78<br>86 Front St, Sioux Lookout, ON P8T 1A3</div></div>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-3">
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Christmas+Party+2026+-+SLFCS&dates=20261212T230000Z/20261213T030000Z&details=Join+us+for+the+Sioux+Lookout+Filipino-Canadian+Society+Christmas+Party!&location=Royal+Canadian+Legion+Branch+78,+86+Front+St,+Sioux+Lookout,+ON+P8T+1A3" target="_blank" class="flex-1 py-3 bg-navy-900 text-white font-bold rounded-xl text-center hover:bg-brandRed transition-colors shadow-md text-sm">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Christmas+Party+2026+-+SLFCS&dates=20261212T230000Z/20261213T030000Z&details=Join+us+for+the+Sioux+Lookout+Filipino-Canadian+Society+Christmas+Party!&location=Royal+Canadian+Legion+Branch+78,+86+Front+St,+Sioux+Lookout,+ON+P8T+1A3" target="_blank" class="flex-1 py-3 bg-gold-400 text-navy-950 font-bold rounded-xl text-center hover:bg-gold-500 transition-colors shadow-lg text-sm">
                     <i class="fa-regular fa-calendar-plus mr-2"></i> Add to Google Calendar
                 </a>
-                <button onclick="closeEventModal()" class="py-3 px-6 bg-gray-200 text-gray-800 font-bold rounded-xl text-center hover:bg-gray-300 transition-colors text-sm">
+                <button onclick="closeEventModal()" class="py-3 px-6 bg-navy-900 text-gray-200 font-bold rounded-xl text-center hover:bg-navy-800 transition-colors text-sm border border-gold-400/20">
                     Close
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Lightbox Image Preview Modal -->
-    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4" onclick="closeLightbox()">
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4" onclick="closeLightbox()">
         <div class="relative max-w-4xl w-full text-center" onclick="event.stopPropagation()">
             <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white hover:text-gold-400 text-2xl font-bold p-2" aria-label="Close Lightbox">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <img id="lightbox-img" src="" alt="Enlarged community photo" class="max-h-[85vh] mx-auto rounded-2xl shadow-2xl object-contain border border-white/10" onerror="this.src='https://placehold.co/800x600/0B2545/F5D061?text=Trunk+Or+Treat+Photo'">
-            <p id="lightbox-caption" class="text-white text-sm mt-4 font-medium tracking-wide"></p>
+            <img id="lightbox-img" src="" alt="Enlarged community photo" class="max-h-[85vh] mx-auto rounded-2xl shadow-2xl object-contain border border-gold-400/30">
+            <p id="lightbox-caption" class="text-gold-400 text-sm mt-4 font-medium tracking-wide"></p>
         </div>
     </div>
 
-    <!-- JavaScript Scripts for Modals, Toasts, and Lightbox -->
+    <!-- JavaScript -->
     <script>
-        // Mobile Menu Toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
 
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
-            } else {
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-xmark');
-            }
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-xmark');
         });
 
-        // Close mobile menu on link click
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -565,11 +637,9 @@
             });
         });
 
-        // Toast Notification System
         function showToast(message) {
             const container = document.getElementById('toast-container');
-            const msgSpan = document.getElementById('toast-message');
-            msgSpan.textContent = message;
+            document.getElementById('toast-message').textContent = message;
             container.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
             container.classList.add('translate-y-0', 'opacity-100');
             setTimeout(() => {
@@ -578,34 +648,48 @@
             }, 3500);
         }
 
-        // Event Modal Functions
         function openEventModal() {
             const modal = document.getElementById('event-modal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
-
         function closeEventModal() {
             const modal = document.getElementById('event-modal');
             modal.classList.remove('flex');
             modal.classList.add('hidden');
         }
 
-        // Lightbox Modal Functions
         function openLightbox(imgSrc, captionText) {
             const modal = document.getElementById('lightbox-modal');
-            const img = document.getElementById('lightbox-img');
-            const caption = document.getElementById('lightbox-caption');
-            img.src = imgSrc;
-            caption.textContent = captionText;
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-caption').textContent = captionText;
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
-
         function closeLightbox() {
             const modal = document.getElementById('lightbox-modal');
             modal.classList.remove('flex');
             modal.classList.add('hidden');
+        }
+
+        // Switch between Trunk Or Treat and Halloween Albums
+        function switchAlbum(albumName) {
+            const trunkContainer = document.getElementById('album-trunk');
+            const halloweenContainer = document.getElementById('album-halloween');
+            const trunkBtn = document.getElementById('album-btn-trunk');
+            const halloweenBtn = document.getElementById('album-btn-halloween');
+
+            if (albumName === 'trunk') {
+                trunkContainer.classList.remove('hidden');
+                halloweenContainer.classList.add('hidden');
+                trunkBtn.className = "px-6 py-3 rounded-2xl font-bold text-sm bg-gold-400 text-navy-950 shadow-xl transition-all duration-300 flex items-center gap-2";
+                halloweenBtn.className = "px-6 py-3 rounded-2xl font-bold text-sm bg-navy-900 text-gray-300 border border-gold-400/30 shadow-md transition-all duration-300 flex items-center gap-2 hover:bg-gold-400 hover:text-navy-950";
+            } else {
+                trunkContainer.classList.add('hidden');
+                halloweenContainer.classList.remove('hidden');
+                halloweenBtn.className = "px-6 py-3 rounded-2xl font-bold text-sm bg-gold-400 text-navy-950 shadow-xl transition-all duration-300 flex items-center gap-2";
+                trunkBtn.className = "px-6 py-3 rounded-2xl font-bold text-sm bg-navy-900 text-gray-300 border border-gold-400/30 shadow-md transition-all duration-300 flex items-center gap-2 hover:bg-gold-400 hover:text-navy-950";
+            }
         }
     </script>
 </body>
